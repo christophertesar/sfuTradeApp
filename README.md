@@ -1,6 +1,6 @@
 # Introduction
 
-This project is for trading things.
+This project is for trading things. SFU TradeHub
 
 # Reference links
 

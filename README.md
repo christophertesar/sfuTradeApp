@@ -1,3 +1,4 @@
+Hi
 # Introduction
 SFU class project for students to trade things.
 This project is for trading things.

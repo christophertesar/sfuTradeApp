@@ -1,6 +1,7 @@
 # Introduction
 
-This project is for trading things. test 1
+This project allows users to trade used goods among the SFU community by posting ads on the app. This contributes to the circular economy
+as old goods are reused and new goods don't need to be made. Gas is also saved by using the SFU community and trading on campus.
 
 # Reference links
 

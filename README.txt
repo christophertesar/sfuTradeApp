@@ -1,4 +1,5 @@
 # Introduction
+
 Our vision was to demonstrate the amount of usage that students have on particular resources such as
 iClickers, textbooks, and more; that can all be utilized by other students once the owner no longer
 needs it. Hence, reusing/reselling school resources through an application as a marketplace that
@@ -17,5 +18,6 @@ materials through an app with listings of materials being sold that will be in u
 student. Thus, a handy app: SFU TradeHub is created for being a marketplace that allows students to
 interact, communicate, and browse through for buyers or sellers.
 
-#Coding Guide
+# Coding Guide
+
  We are using the Google Java Style Guide to create our project. The details can be found at https://google.github.io/styleguide/javaguide.html. The Google Style Guide provides coding standards for Java developers.

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317000793176",
+    "project_id": "sfu-trade-hub",
+    "storage_bucket": "sfu-trade-hub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317000793176:android:e71c66f84376d7458f1e2d",
+        "android_client_info": {
+          "package_name": "com.example.myfirstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317000793176-747uv16lssl98hepo8niu1fc2e1l3kui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApvHhqajhc38IhtN2JuwyGuOXK08HfjdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317000793176-747uv16lssl98hepo8niu1fc2e1l3kui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

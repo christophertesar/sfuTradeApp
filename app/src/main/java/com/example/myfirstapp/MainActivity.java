@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.Button;
 
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-
-import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-    --------------------------------------------------------------------------------------------
+     --------------------------------------------------------------------------------------------
      **/
 
     @Override
@@ -103,6 +99,15 @@ public class MainActivity extends AppCompatActivity {
                 String pass = mPassword.getText().toString();
                 if(!email.equals("") && !pass.equals("")){
                     mAuth.signInWithEmailAndPassword(email,pass);
+
+                    //User directed to the main app screen after signing in
+                    btnSignIn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MainActivity.this, MainApp.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
                 else{
                     toastMessage("Fields not filled.");
@@ -121,5 +126,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-
 

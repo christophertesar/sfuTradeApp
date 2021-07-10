@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Marketplace"
-        android:textSize="30sp"
-        android:layout_centerInParent="true" />
+<!--    <LinearLayout-->
+<!--        android:id="@+id/header"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:background="#42069F"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="13dp"-->
+<!--            android:layout_marginHorizontal="20dp"-->
+<!--            android:text="@string/marketplace"-->
+<!--            android:textSize="38sp"-->
+<!--            android:textColor="#FFF"-->
+<!--            android:fontFamily="sans-serif-condensed-medium" />-->
+<!--        -->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/search_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_below="@id/header"-->
+<!--        android:background="@android:color/holo_blue_light"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <android.support.v7.widget.SearchView-->
+<!--            android:layout_width="410dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_height="43dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:background="@drawable/bg_searchview"-->
+<!--            app:queryHint="@string/search_bar"-->
+<!--            app:queryBackground="@android:color/transparent"-->
+<!--            app:iconifiedByDefault="false" >-->
+<!--        </android.support.v7.widget.SearchView>-->
+<!--    </LinearLayout>-->
+
+
+<!--    <android.support.design.widget.TabLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/search_bar"-->
+<!--        android:background="@android:color/holo_blue_light"-->
+<!--        app:tabIndicatorColor="#000000">-->
+
+<!--        <android.support.design.widget.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/for_sale" />-->
+
+<!--        <android.support.design.widget.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/want_to_buy" />-->
+<!--    </android.support.design.widget.TabLayout>-->
+
+
+    <!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Marketplace"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_centerInParent="true" />-->
 
 </RelativeLayout>

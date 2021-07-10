@@ -18,6 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
+
+import android.view.View;
+import android.widget.Button;
+
 public class MainActivity extends AppCompatActivity {
 
     private Context mContext = MainActivity.this;
@@ -117,3 +121,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
+

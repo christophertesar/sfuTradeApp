@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#42069F"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/marketplace"
+            android:textSize="38sp"
+            android:textColor="#FFF"
+            android:fontFamily="sans-serif-condensed-medium" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/header"
+        android:background="@android:color/holo_blue_light"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="410dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_searchview"
+            app:queryHint="@string/search_bar"
+            app:queryBackground="@android:color/transparent"
+            app:iconifiedByDefault="false" >
+        </androidx.appcompat.widget.SearchView>
+    </LinearLayout>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_bar"
+        android:background="@android:color/holo_blue_light"
+        app:tabIndicatorColor="#000000">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/for_sale" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/want_to_buy" />
+    </TableLayout>
+
+
+    <!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Marketplace"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_centerInParent="true" />-->
+
+</RelativeLayout>

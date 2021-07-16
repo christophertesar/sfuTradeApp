@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.Button;
 
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private Context mContext = MainActivity.this;
 
@@ -50,6 +49,16 @@ public class MainActivity extends AppCompatActivity{
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null) {
                     toastMessage("Successfully signed in with:" + user.getEmail());
+
+//                    //User directed to the main app screen after signing in
+//                    Button button = (Button) findViewById(R.id.button);
+//                    button.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Intent intent = new Intent(MainActivity.this, MainApp.class);
+//                            startActivity(intent);
+//                        }
+//                    });
                 }
                 else {
                     toastMessage("Successfully signed out.");
@@ -87,7 +96,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
-    --------------------------------------------------------------------------------------------
+     --------------------------------------------------------------------------------------------
      **/
 
     @Override
@@ -122,7 +131,6 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         });
-
                 }
                 else{
                     toastMessage("Fields not filled.");
@@ -139,7 +147,16 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        //User directed to the main app screen after signing in
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainApp.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
-
 

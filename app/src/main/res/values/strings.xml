@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My First App</string>
+    <string name="want_to_buy">Want to buy</string>
+    <string name="for_sale">For Sale</string>
+    <string name="search_bar">Search Marketplace</string>
+    <string name="marketplace">Marketplace</string>
+
+    <string name="dashboard">Dashboard</string>
+    <string name="post">Post</string>
+    <string name="market">Marketplace</string>
 </resources>

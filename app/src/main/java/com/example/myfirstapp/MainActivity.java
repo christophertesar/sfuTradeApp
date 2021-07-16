@@ -11,8 +11,12 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     //UI
     private EditText mEmail, mPassword;
     private Button btnSignIn, btnSignOut;
+    private ProgressBar mProgressBar;
 
     /**
      * Setup of Firebase authenticator
@@ -108,7 +113,20 @@ public class MainActivity extends AppCompatActivity {
                 String email = mEmail.getText().toString();
                 String pass = mPassword.getText().toString();
                 if(!email.equals("") && !pass.equals("")){
-                    mAuth.signInWithEmailAndPassword(email,pass);
+                    mAuth.signInWithEmailAndPassword(email,pass)
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(!task.isSuccessful()){
+                                        toastMessage("Invalid credentials.");
+                                    }
+                                    else{
+                                        Intent intent = new Intent(MainActivity.this, MainApp.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
+
 
                 }
                 else{
@@ -126,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        /*
         //User directed to the main app screen after signing in
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
     }
 }
 

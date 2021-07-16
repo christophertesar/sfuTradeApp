@@ -8,4 +8,8 @@
     <string name="dashboard">Dashboard</string>
     <string name="post">Post</string>
     <string name="market">Marketplace</string>
+
+    <string name="post_option">Pick Your Type of Posting</string>
+    <string name="want_to_sell">Want to Sell</string>
+    
 </resources>

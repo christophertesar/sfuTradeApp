@@ -75,7 +75,7 @@
 
 
         <EditText
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:background="#FFF"
             android:hint="@string/search_bar"
@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:text="Catergories"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="15sp"
             android:textSize="30sp"
             android:fontFamily="sans-serif-condensed-medium" />
@@ -148,7 +148,8 @@
         android:layout_below="@id/catergory"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" >
 
         <LinearLayout
             android:id="@+id/cardview1"

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Setup of Firebase authenticator
      */
+
     private void setupFirebaseAuth(){
         mAuth = FirebaseAuth.getInstance();
 
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+
+
     }
 
     @Override
@@ -105,24 +109,31 @@ public class MainActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.editTextTextPassword);
         btnSignIn = (Button) findViewById(R.id.button);
         btnSignOut = (Button) findViewById(R.id.button2);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.INVISIBLE);
 
         setupFirebaseAuth();
+
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 String email = mEmail.getText().toString();
                 String pass = mPassword.getText().toString();
                 if(!email.equals("") && !pass.equals("")){
+                    mProgressBar.setVisibility(View.VISIBLE);
                     mAuth.signInWithEmailAndPassword(email,pass)
                             .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(!task.isSuccessful()){
                                         toastMessage("Invalid credentials.");
+                                        mProgressBar.setVisibility(View.GONE);
                                     }
                                     else{
+                                        mProgressBar.setVisibility(View.GONE);
                                         Intent intent = new Intent(MainActivity.this, MainApp.class);
                                         startActivity(intent);
+                                        finish();
                                     }
                                 }
                             });

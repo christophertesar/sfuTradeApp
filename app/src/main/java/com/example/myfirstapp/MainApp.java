@@ -2,6 +2,10 @@ package com.example.myfirstapp;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,16 @@ public class MainApp extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+//        ImageView arrowIcon = findViewById(R.id.post_back_arrow);
+//        TextView title = findViewById(R.id.tool_bar_post);
+//        arrowIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainApp.this, "you clicked the back icon", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        title.setText("testing");
 
     }
 

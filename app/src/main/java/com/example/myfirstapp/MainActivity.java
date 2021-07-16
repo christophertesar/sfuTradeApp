@@ -12,8 +12,12 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -22,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private Context mContext = MainActivity.this;
 
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     //UI
     private EditText mEmail, mPassword;
     private Button btnSignIn, btnSignOut;
+    private ProgressBar mProgressBar;
 
     /**
      * Setup of Firebase authenticator
@@ -94,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.editTextTextPassword);
         btnSignIn = (Button) findViewById(R.id.button);
         btnSignOut = (Button) findViewById(R.id.button2);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
 
         setupFirebaseAuth();
         btnSignIn.setOnClickListener(new View.OnClickListener(){
@@ -102,7 +109,20 @@ public class MainActivity extends AppCompatActivity {
                 String email = mEmail.getText().toString();
                 String pass = mPassword.getText().toString();
                 if(!email.equals("") && !pass.equals("")){
-                    mAuth.signInWithEmailAndPassword(email,pass);
+                    mProgressBar.setVisibility((View.VISIBLE)); //The progress bar shows up.
+                    mAuth.signInWithEmailAndPassword(email,pass) //Sign into firebase using email and password.
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(!task.isSuccessful()){
+                                    mProgressBar.setVisibility(View.GONE);
+                                }
+                                else{
+                                    mProgressBar.setVisibility(View.GONE);
+                                }
+                            }
+                        });
+
                 }
                 else{
                     toastMessage("Fields not filled.");

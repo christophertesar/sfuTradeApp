@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     //UI
     private EditText mEmail, mPassword;
-    private Button btnSignIn, btnSignOut;
+    private Button btnSignIn, btnRegister, btnSignOut;
     private ProgressBar mProgressBar;
 
     /**
@@ -63,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-
-
-
     }
 
     @Override
@@ -108,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         mPassword = (EditText) findViewById(R.id.editTextTextPassword);
         btnSignIn = (Button) findViewById(R.id.button);
-        btnSignOut = (Button) findViewById(R.id.button2);
+        btnRegister = (Button) findViewById(R.id.button2);
+        btnSignOut = (Button) findViewById(R.id.sign_out_btn);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.INVISIBLE);
 
@@ -147,26 +145,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSignOut.setOnClickListener(new View.OnClickListener(){
+        btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                mAuth.signOut();
-                toastMessage("Signing out.");
-            }
-        });
-
-
-        /*
-        //User directed to the main app screen after signing in
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainApp.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
-*/
+
+        btnSignOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                FirebaseAuth.getInstance().signOut();
+            }
+        });
     }
 }
 

@@ -23,16 +23,7 @@ public class MainApp extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-//        ImageView arrowIcon = findViewById(R.id.post_back_arrow);
-//        TextView title = findViewById(R.id.tool_bar_post);
-//        arrowIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(MainApp.this, "you clicked the back icon", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        title.setText("testing");
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =

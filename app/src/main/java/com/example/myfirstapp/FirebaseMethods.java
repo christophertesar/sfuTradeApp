@@ -17,6 +17,11 @@ public class FirebaseMethods {
 
     private Context mContext;
 
+
+    /*
+    Get instance of firebase authenticator based on context. Retrieves user ID if user is logged in.
+    @param context
+     */
     public FirebaseMethods(Context context){
         mAuth = FirebaseAuth.getInstance();
         mContext = context;
@@ -27,18 +32,21 @@ public class FirebaseMethods {
         }
     }
 
+    /*
+    Adds a new email and password to the firebase database
+    @param email
+    @param password
+     */
     public void registerNewEmail(final String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(new OnCompleteListener<AuthResult>(){
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        userID = mAuth.getCurrentUser().getUid();
-
-                    }
-                    else if(!task.isSuccessful()){
+                    if(!task.isSuccessful()){
                         Toast.makeText(mContext, "Authentication Failed.", Toast.LENGTH_SHORT).show();
-
+                    }
+                    else if(task.isSuccessful()){
+                        userID = mAuth.getCurrentUser().getUid();
                     }
                 }
             });

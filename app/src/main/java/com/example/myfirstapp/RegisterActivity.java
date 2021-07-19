@@ -34,6 +34,10 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerButton;
     private static final String SFU_DOMAIN = "sfu.ca";
 
+    /*
+    Initializes the Register activity. By clicking the register button, the register function should execute.
+    @param NULL
+     */
     private void init(){
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +46,18 @@ public class RegisterActivity extends AppCompatActivity {
                 password = mPassword.getText().toString();
                 if(checkInputs(email,password)){
                     mProgressBar.setVisibility(View.VISIBLE);
+
                     firebaseMethods.registerNewEmail(email,password);
                 }
             }
         });
     }
 
+    /*
+    Checks if the email and password that is inputted is valid or not.
+    @param email
+    @param password
+     */
     private boolean checkInputs(String email, String password){
         String domain = email.substring(email.indexOf("@")+1);
         if(email.equals("") || password.equals("")){
@@ -60,6 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
+    /*
+    Initializes the widgets seen inside of the RegisterActivity Screen.
+    @param NULL
+     */
     private void initWidgets(){
         mEmail = (EditText) findViewById(R.id.editTextEmailRegister);
         mPassword = (EditText) findViewById(R.id.editTextPasswordRegister);
@@ -79,6 +93,10 @@ public class RegisterActivity extends AppCompatActivity {
         init();
     }
 
+    /*
+    Checks if a String is Null.
+    @param string
+     */
     private boolean isStringNull(String string){
         if(string.equals("")){
             return true;
@@ -88,6 +106,10 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    A firebase listener that lets the user know if they are logged in when a auth state changes.
+    @param NULL
+    */
     private void setupFirebaseAuth(){
         mAuth = FirebaseAuth.getInstance();
 
@@ -105,7 +127,10 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
     }
-
+    /*
+    Creates a toast message.
+    @param message
+     */
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
@@ -114,7 +139,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         mAuth.addAuthStateListener(mAuthListener);
-        FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
     }
 

@@ -35,8 +35,8 @@ public class PostFragment extends Fragment {
 //            }
 //        });
 
-        Button b1 = v.findViewById(R.id.btn_WTS_post);
-        b1.setOnClickListener(new View.OnClickListener() {
+        Button btn_wts = v.findViewById(R.id.btn_WTS_post);
+        btn_wts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),CreatePostActivity.class));

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+//creates an activity for the Post fill-form. The [Post] Want to Sell Button calls to this activity.
 public class CreatePostFragment extends Fragment {
     public CreatePostFragment() {}
 

@@ -11,7 +11,7 @@ public class CreatePostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_post_createpost);
+        setContentView(R.layout.forum_post);
 
 
 

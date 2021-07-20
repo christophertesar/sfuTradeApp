@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null) {
-                    toastMessage("Successfully signed in with:" + user.getEmail());
+                    //toastMessage("Successfully signed in with:" + user.getEmail());
 
 //                    //User directed to the main app screen after signing in
 //                    Button button = (Button) findViewById(R.id.button);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 //                    });
                 }
                 else {
-                    toastMessage("Successfully signed out.");
+                    //toastMessage("Successfully signed out.");
                 }
             }
         };
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
                 String email = mEmail.getText().toString();
                 String pass = mPassword.getText().toString();
                 if(!email.equals("") && !pass.equals("")){
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     else{
                                         mProgressBar.setVisibility(View.GONE);
+                                        toastMessage("Successfully signed in.");
                                         Intent intent = new Intent(MainActivity.this, MainApp.class);
                                         startActivity(intent);
                                         finish();
@@ -156,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
         btnSignOut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
                 FirebaseAuth.getInstance().signOut();
+                toastMessage("Signed Out.");
             }
         });
     }

@@ -44,11 +44,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = mEmail.getText().toString();
                 password = mPassword.getText().toString();
-                if(checkInputs(email,password)){
-                    mProgressBar.setVisibility(View.VISIBLE);
 
+                mProgressBar.setVisibility(View.VISIBLE);
+                if(checkInputs(email,password)){
                     firebaseMethods.registerNewEmail(email,password);
+                    mProgressBar.setVisibility(View.GONE);
+                    toastMessage("Successfully registered.");
+                    finish();
                 }
+                mProgressBar.setVisibility(View.GONE);
+
             }
         });
     }
@@ -118,11 +123,11 @@ public class RegisterActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null) {
-                    toastMessage("Successfully signed in with:" + user.getEmail());
+                    //toastMessage("Successfully signed in with:" + user.getEmail());
 
                 }
                 else {
-                    toastMessage("Successfully signed out.");
+                    //toastMessage("Successfully signed out.");
                 }
             }
         };

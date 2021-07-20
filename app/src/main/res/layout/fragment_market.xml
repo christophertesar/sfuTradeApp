@@ -6,38 +6,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFF">
 
-    <RelativeLayout
-        android:id="@+id/market1_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#371452">
-        <ImageView
-            android:id="@+id/post_back_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
-        <TextView
-            android:id="@+id/tool_bar_post"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/marketplace"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:textSize="20sp"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"/>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/market1_header"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="16dp"-->
+<!--        android:background="#371452">-->
 
-        <ImageButton
-            android:layout_alignParentEnd="true"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_account_circle_white"
-            android:background="@android:color/transparent"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tool_bar_post"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/marketplace"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:fontFamily="sans-serif-condensed-medium"-->
+<!--            android:textSize="25sp"-->
+<!--            android:paddingLeft="15dp"-->
+<!--            android:layout_centerVertical="true"/>-->
 
-    </RelativeLayout>
+<!--        <ImageButton-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:src="@drawable/ic_account_circle_white"-->
+<!--            android:background="@android:color/transparent"/>-->
+
+<!--    </RelativeLayout>-->
 <!--    <LinearLayout-->
 <!--        android:id="@+id/header"-->
 <!--        android:layout_width="match_parent"-->
@@ -127,7 +121,6 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/market1_header"
         app:tabBackground="@android:color/darker_gray">
 
         <com.google.android.material.tabs.TabItem

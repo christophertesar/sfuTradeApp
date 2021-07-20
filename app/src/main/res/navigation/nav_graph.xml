@@ -22,4 +22,16 @@
         android:id="@+id/marketFragment"
         android:name="com.example.myfirstapp.MarketFragment"
         android:label="MarketFragment" />
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.myfirstapp.PostFragment"
+        android:label="PostFragment" >
+        <action
+            android:id="@+id/action_postFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.myfirstapp.CreatePostFragment"
+        android:label="CreatePostFragment" />
 </navigation>

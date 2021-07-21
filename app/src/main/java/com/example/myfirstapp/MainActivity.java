@@ -81,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creates a toast message from a string.
+     * @param message
+     */
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
@@ -96,7 +100,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      --------------------------------------------------------------------------------------------
      **/
-
+    /**
+     * Main login screen on startup.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar.setVisibility(View.INVISIBLE);
 
         setupFirebaseAuth();
+        mAuth.signOut();
 
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -124,16 +132,28 @@ public class MainActivity extends AppCompatActivity {
                             .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+
                                     if(!task.isSuccessful()){
                                         toastMessage("Invalid credentials.");
                                         mProgressBar.setVisibility(View.GONE);
                                     }
                                     else{
-                                        mProgressBar.setVisibility(View.GONE);
-                                        toastMessage("Successfully signed in.");
-                                        Intent intent = new Intent(MainActivity.this, MainApp.class);
-                                        startActivity(intent);
-                                        finish();
+                                        try{
+                                            if(user.isEmailVerified()){
+                                                finish();
+                                                Intent intent = new Intent(MainActivity.this, MainApp.class);
+                                                startActivity(intent);
+                                            }
+                                            else{
+                                                toastMessage("Please verify your email.");
+                                                mProgressBar.setVisibility(View.GONE);
+                                                mAuth.signOut();
+                                            }
+                                        }
+                                        catch(NullPointerException e){
+
+                                        }
                                     }
                                 }
                             });

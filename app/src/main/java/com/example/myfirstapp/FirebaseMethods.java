@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class FirebaseMethods {
     private FirebaseAuth mAuth;
@@ -18,7 +19,7 @@ public class FirebaseMethods {
     private Context mContext;
 
 
-    /*
+    /**
     Get instance of firebase authenticator based on context. Retrieves user ID if user is logged in.
     @param context
      */
@@ -32,7 +33,7 @@ public class FirebaseMethods {
         }
     }
 
-    /*
+    /**
     Adds a new email and password to the firebase database
     @param email
     @param password
@@ -46,11 +47,32 @@ public class FirebaseMethods {
                         Toast.makeText(mContext, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                     }
                     else if(task.isSuccessful()){
+                        sendVerificationEmail();
                         userID = mAuth.getCurrentUser().getUid();
                     }
                 }
             });
-
     }
 
+    /**
+     * This function sends a verification email to the newly created account to verify.
+     */
+    public void sendVerificationEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null){
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+
+                            }
+                            else{
+                                Toast.makeText(mContext, "Verification email could not be sent.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
 }

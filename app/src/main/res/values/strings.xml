@@ -12,5 +12,7 @@
 
     <string name="post_option">Pick Your Type of Posting</string>
     <string name="want_to_sell">Want to Sell</string>
+
+    <string name="password_warning">Password must include letters and numbers.</string>
     
 </resources>

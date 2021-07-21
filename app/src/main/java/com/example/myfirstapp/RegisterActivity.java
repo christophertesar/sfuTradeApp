@@ -20,12 +20,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseMethods firebaseMethods;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference myReference;
+
 
     private String email, password;
     private Context mContext = RegisterActivity.this;
@@ -34,9 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerButton;
     private static final String SFU_DOMAIN = "sfu.ca";
 
-    /*
+    /**
     Initializes the Register activity. By clicking the register button, the register function should execute.
-    @param NULL
      */
     private void init(){
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -44,16 +51,20 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = mEmail.getText().toString();
                 password = mPassword.getText().toString();
-                if(checkInputs(email,password)){
-                    mProgressBar.setVisibility(View.VISIBLE);
 
+                mProgressBar.setVisibility(View.VISIBLE);
+                if(checkInputs(email,password)){
                     firebaseMethods.registerNewEmail(email,password);
+                    mProgressBar.setVisibility(View.GONE);
+                    toastMessage("Successfully registered.");
                 }
+                mProgressBar.setVisibility(View.GONE);
+
             }
         });
     }
 
-    /*
+    /**
     Checks if the email and password that is inputted is valid or not.
     @param email
     @param password
@@ -70,9 +81,8 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
-    /*
+    /**
     Initializes the widgets seen inside of the RegisterActivity Screen.
-    @param NULL
      */
     private void initWidgets(){
         mEmail = (EditText) findViewById(R.id.editTextEmailRegister);
@@ -93,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
         init();
     }
 
-    /*
+    /**
     Checks if a String is Null.
     @param string
      */
@@ -106,28 +116,41 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    /*
+    /**
     A firebase listener that lets the user know if they are logged in when a auth state changes.
-    @param NULL
-    */
+     */
     private void setupFirebaseAuth(){
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myReference = mFirebaseDatabase.getReference();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null) {
-                    toastMessage("Successfully signed in with:" + user.getEmail());
+                    //toastMessage("Successfully signed in with:" + user.getEmail());
+                    myReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            mAuth.signOut();
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    finish();
                 }
                 else {
-                    toastMessage("Successfully signed out.");
+                    //toastMessage("Successfully signed out.");
                 }
             }
         };
     }
-    /*
+    /**
     Creates a toast message.
     @param message
      */

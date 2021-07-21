@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseMethods firebaseMethods;
@@ -49,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 email = mEmail.getText().toString();
                 password = mPassword.getText().toString();
 
@@ -60,6 +63,12 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 mProgressBar.setVisibility(View.GONE);
 
+                //save new user into the database in the 'Users' tree
+                mFirebaseDatabase = FirebaseDatabase.getInstance();
+                myReference = mFirebaseDatabase.getReference();
+                HashMap<String, String> userMap = new HashMap<>();
+                userMap.put("email", email);
+                myReference.child("Users").push().setValue(userMap);
             }
         });
     }

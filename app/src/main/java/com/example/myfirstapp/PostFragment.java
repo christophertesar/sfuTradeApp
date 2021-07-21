@@ -35,6 +35,7 @@ public class PostFragment extends Fragment {
 //            }
 //        });
 
+        //Leads to the fill-form for the making the WTS post
         Button btn_wts = v.findViewById(R.id.btn_WTS_post);
         btn_wts.setOnClickListener(new View.OnClickListener() {
             @Override

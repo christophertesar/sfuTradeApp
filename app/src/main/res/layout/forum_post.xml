@@ -19,7 +19,6 @@
                 android:id="@+id/relLayout1"
                 android:background="#202F65">
 
-
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -45,11 +44,12 @@
                         android:id="@+id/input_title"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:background="@null"
                         android:maxLines="2"
                         android:hint="Title"
                         android:textColor="@android:color/black"
-                        android:padding="10dp"/>
+                        android:padding="10dp" />
 
                 </RelativeLayout>
 

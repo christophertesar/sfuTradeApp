@@ -1,88 +1,23 @@
-Hi
 # Introduction
-SFU class project for students to trade things.
-This project is for trading things.
-Made for the SFU community.
 
-This project allows users to trade used goods among the SFU community by posting ads on the app. This contributes to the circular economy
-as old goods are reused and new goods don't need to be made. Gas is also saved by using the SFU community and trading on campus.
+Our vision was to demonstrate the amount of usage that students have on particular resources such as
+iClickers, textbooks, and more; that can all be utilized by other students once the owner no longer
+needs it. Hence, reusing/reselling school resources through an application as a marketplace that
+connects the buyers and the sellers. Our goal is to prevent these useful items from being thrown in
+the trash when it can be used and bought by someone else at an affordable price. We hope in years to
+come that our product is a staple in SFU students’ learning culture.
 
-# Reference links
+Introducing SFU TradeHub! Where students or faculty members will be able to browse for items that
+other people do not find useful to them anymore.The SFU TradeHub allows students to put up products
+(i.e. Books, iClickers, etc.) that they would not need anymore and sell them. Students will be able
+to buy the items directly from the seller by contacting each other individually. The marketplace app
+ will help promote the usage of reusing instead of throwing or recycling the items away.
 
-- [GitLab CI Documentation](https://docs.gitlab.com/ee/ci/)
-- [Blog post: Android publishing with GitLab and fastlane](https://about.gitlab.com/2019/01/28/android-publishing-with-gitlab-and-fastlane/)
+The solution is to create a connected community at SFU that allows people to exchange school
+materials through an app with listings of materials being sold that will be in use by another
+student. Thus, a handy app: SFU TradeHub is created for being a marketplace that allows students to
+interact, communicate, and browse through for buyers or sellers.
 
-You'll definitely want to read through the blog post since that walks you in detail
-through a working production configuration using this model.
+# Coding Guide
 
-# Getting started
-
-First thing is to follow the [Android tutorial](https://developer.android.com/training/basics/firstapp/) and
-get Android Studio installed on your machine, so you can do development using
-the Android IDE. Other IDE options are possible, but not directly described or
-supported here. If you're using your own IDE, it should be fairly straightforward
-to convert these instructions to use with your preferred toolchain.
-
-## What's contained in this project
-
-### Android code
-
-The state of this project is as if you followed the first few steps in the linked
-[Android tutorial](https://developer.android.com/training/basics/firstapp/) and
-have created your project. You're definitely going to want to open up the
-project and change the settings to match what you plan to build. In particular,
-you're at least going to want to change the following:
-
-- Application Name: "My First App"
-- Company Domain: "example.com"
-
-### Fastlane files
-
-It also has fastlane setup per our [blog post](https://about.gitlab.com/2019/01/28/android-publishing-with-gitlab-and-fastlane/) on
-getting GitLab CI set up with fastlane. Note that you may want to update your
-fastlane bundle to the latest version; if a newer version is available, the pipeline
-job output will tell you.
-
-### Dockerfile build environment
-
-In the root there is a Dockerfile which defines a build environment which will be
-used to ensure consistent and reliable builds of your Android application using
-the correct Android SDK and other details you expect. Feel free to add any
-build-time tools or whatever else you need here.
-
-We generate this environment as needed because installing the Android SDK
-for every pipeline run would be very slow.
-
-### Gradle configuration
-
-The gradle configuration is exactly as output by Android Studio except for the
-version name being updated to 
-
-Instead of:
-
-`versionName "1.0"`
-
-It is now set to:
-
-`versionName "1.0-${System.env.VERSION_SHA}"`
-
-You'll want to update this for whatever versioning scheme you prefer.
-
-### Build configuration (`.gitlab-ci.yml`)
-
-The sample project also contains a basic `.gitlab-ci.yml` which will successfully 
-build the Android application.
-
-Note that for publishing to the test channels or production, you'll need to set
-up your secret API key. The stub code is here for that, but please see our
-[blog post](https://about.gitlab.com/2019/01/28/android-publishing-with-gitlab-and-fastlane/) for
-details on how to set this up completely. In the meantime, publishing steps will fail.
-
-The build script also handles automatic versioning by relying on the CI pipeline
-ID to generate a unique, ever increasing number. If you have a different versioning
-scheme you may want to change this.
-
-```yaml
-    - "export VERSION_CODE=$(($CI_PIPELINE_IID)) && echo $VERSION_CODE"
-    - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
-```
+ We are using the Google Java Style Guide to create our project. The details can be found at https://google.github.io/styleguide/javaguide.html. The Google Style Guide provides coding standards for Java developers.

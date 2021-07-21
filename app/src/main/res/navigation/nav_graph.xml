@@ -12,7 +12,11 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.myfirstapp.DashboardFragment"
-        android:label="DashboardFragment" />
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.myfirstapp.MainActivity"
@@ -21,17 +25,21 @@
     <fragment
         android:id="@+id/marketFragment"
         android:name="com.example.myfirstapp.MarketFragment"
-        android:label="MarketFragment" />
+        android:label="MarketFragment" >
+        <action
+            android:id="@+id/action_marketFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
     <fragment
         android:id="@+id/postFragment"
         android:name="com.example.myfirstapp.PostFragment"
         android:label="PostFragment" >
         <action
-            android:id="@+id/action_postFragment_to_createPostFragment"
-            app:destination="@id/createPostFragment" />
+            android:id="@+id/action_postFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
-        android:id="@+id/createPostFragment"
-        android:name="com.example.myfirstapp.CreatePostFragment"
-        android:label="CreatePostFragment" />
+        android:id="@+id/accountFragment"
+        android:name="com.example.myfirstapp.AccountFragment"
+        android:label="AccountFragment" />
 </navigation>

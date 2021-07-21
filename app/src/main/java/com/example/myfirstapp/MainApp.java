@@ -21,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainApp extends AppCompatActivity {
+    public Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class MainApp extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
+        getSupportActionBar().setTitle("Dashboard");
 
     }
 
@@ -44,14 +46,17 @@ public class MainApp extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
                         case R.id.nav_dashboard:
                             selectedFragment = new DashboardFragment();
+                            getSupportActionBar().setTitle("Dashboard");
                             break;
 
                         case R.id.nav_post:
                             selectedFragment = new PostFragment();
+                            getSupportActionBar().setTitle("Post");
                             break;
 
                         case R.id.nav_market:
                             selectedFragment = new MarketFragment();
+                            getSupportActionBar().setTitle("Marketplace");
                             break;
                     }
 
@@ -62,19 +67,44 @@ public class MainApp extends AppCompatActivity {
             };
 
 
+//    //shows the profile menu/icon
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.profile,menu);
+//        return true;
+//    }
+//    //Links profile_pic to Account page.
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if (item.getItemId() == R.id.profile)
+//        {
+//            Fragment accountfragment = new AccountFragment();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,accountfragment).commit();
+//            item.setVisible(false);
+//            getSupportActionBar().setTitle("Account");
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        }
+//        return true;
+//    }
+
+
+    //shows the profile menu/icon
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.profile,menu);
         return true;
     }
-
+    //Links profile_pic to Account page.
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.profile:
-                Toast.makeText(getApplicationContext(),"You clicked Profile",Toast.LENGTH_SHORT).show();
+        if (item.getItemId() == R.id.profile)
+        {
+            Intent intent = new Intent(MainApp.this, AccountActivity.class);
+            startActivity(intent);
+//            item.setVisible(false);
+//            getSupportActionBar().setTitle("Account");
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
         return true;
     }
 

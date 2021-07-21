@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">My First App</string>
+    <string name="signout">Sign Out</string>
+    <string name="signin">Sign In</string>
     <string name="profile" >Profile</string>
     <string name="want_to_buy">Want to buy</string>
     <string name="for_sale">For Sale</string>
@@ -12,5 +14,6 @@
 
     <string name="post_option">Pick Your Type of Posting</string>
     <string name="want_to_sell">Want to Sell</string>
-    
+    <string name="account">Account</string>
+
 </resources>

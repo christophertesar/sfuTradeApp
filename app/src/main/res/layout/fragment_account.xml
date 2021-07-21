@@ -13,17 +13,38 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="@string/app_name" />
     <TextView
-        android:id="@+id/btn"
+        android:id="@+id/email_address_title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="20dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:text="@string/email_address"
+        android:fontFamily="sans-serif-condensed-medium" />
+    <TextView
+        android:id="@+id/email_address"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/email_address_title"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="12dp"
+        android:background="@android:color/holo_blue_dark"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/txt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:background="@android:color/darker_gray"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:text="@string/email_address"-->
+<!--        android:fontFamily="sans-serif-condensed-medium" />-->
 
     <Button
-        android:layout_below="@id/btn"
+        android:layout_below="@id/email_address"
         android:id="@+id/btn_signout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
         android:hint="@string/signout"
         android:layout_marginTop="100dp" />
 

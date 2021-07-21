@@ -22,7 +22,7 @@
         <activity android:name=".MainApp" />
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".CreatePostActivity" />
-
+        <activity android:name=".LoginActivity" />
         <activity android:name=".AccountActivity"
             android:parentActivityName=".MainApp">
         </activity>

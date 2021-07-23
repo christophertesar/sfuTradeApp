@@ -12,12 +12,15 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="@string/app_name" />
+
     <TextView
         android:id="@+id/email_address_title"
+        android:layout_below="@id/FullName"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginTop="100dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="10dp"
         android:text="@string/email_address"
         android:fontFamily="sans-serif-condensed-medium" />
     <TextView
@@ -26,11 +29,28 @@
         android:layout_height="30dp"
         android:layout_below="@id/email_address_title"
         android:textSize="15sp"
-        android:textColor="@android:color/white"
-        android:layout_marginLeft="12dp"
-        android:background="@android:color/holo_blue_dark"/>
+        android:layout_marginLeft="12dp" />
 
-<!--    <TextView-->
+
+    <TextView
+        android:id="@+id/FullName_title"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="15dp"
+        android:text="@string/full_name"
+        android:fontFamily="sans-serif-condensed-medium" />
+    <TextView
+        android:id="@+id/FullName"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/FullName_title"
+        android:textSize="15sp"
+        android:text="@string/full_name"
+        android:layout_marginLeft="12dp" />
+
+    <!--    <TextView-->
 <!--        android:id="@+id/txt"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="20dp"-->

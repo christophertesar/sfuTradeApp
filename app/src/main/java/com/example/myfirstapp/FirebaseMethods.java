@@ -10,6 +10,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FirebaseMethods {
     private FirebaseAuth mAuth;
@@ -38,7 +43,7 @@ public class FirebaseMethods {
     @param email
     @param password
      */
-    public void registerNewEmail(final String email, String password){
+    public void registerNewEmail(final String name, final String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(new OnCompleteListener<AuthResult>(){
                 @Override
@@ -48,15 +53,15 @@ public class FirebaseMethods {
                     }
                     else if(task.isSuccessful()){
                         sendVerificationEmail();
-                        userID = mAuth.getCurrentUser().getUid();
+//                        userID = mAuth.getCurrentUser().getUid();
+                        saveUserRegisterData(name, email);
                     }
                 }
             });
     }
 
-    /**
-     * This function sends a verification email to the newly created account to verify.
-     */
+
+    //This function sends a verification email to the newly created account to verify.
     public void sendVerificationEmail(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -75,4 +80,22 @@ public class FirebaseMethods {
                     });
         }
     }
+
+    //save user's registered data into the database based on their uid as the key
+    private void saveUserRegisterData (final String name, final String email){
+        User person = new User(name, email);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference myReference = db.getReference("Users");
+
+//        Map<String, String> userMap = new HashMap<>();
+//        userMap.put("name", name);
+//        userMap.put("email", email);
+        myReference.child(userID).setValue(person);
+
+        //this part im not sure if i need it to retrieve it back from database
+    }
+
 }

@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,11 +36,13 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference myReference;
+    private FirebaseUser user;
+    private String userID;
 
 
-    private String email, password;
+    private String name, email, password;
     private Context mContext = RegisterActivity.this;
-    private EditText mEmail, mPassword;
+    private EditText mName, mEmail, mPassword;
     private ProgressBar mProgressBar;
     private Button registerButton;
     private static final String SFU_DOMAIN = "sfu.ca";
@@ -52,23 +55,17 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                name = mName.getText().toString();
                 email = mEmail.getText().toString();
                 password = mPassword.getText().toString();
 
                 mProgressBar.setVisibility(View.VISIBLE);
                 if(checkInputs(email,password)){
-                    firebaseMethods.registerNewEmail(email,password);
+                    firebaseMethods.registerNewEmail(name, email, password);
                     mProgressBar.setVisibility(View.GONE);
                     toastMessage("Successfully registered.");
                 }
                 mProgressBar.setVisibility(View.GONE);
-
-                //save new user into the database in the 'Users' tree
-                mFirebaseDatabase = FirebaseDatabase.getInstance();
-                myReference = mFirebaseDatabase.getReference();
-                HashMap<String, String> userMap = new HashMap<>();
-                userMap.put("email", email);
-                myReference.child("Users").push().setValue(userMap);
             }
         });
     }
@@ -94,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
     Initializes the widgets seen inside of the RegisterActivity Screen.
      */
     private void initWidgets(){
+        mName = (EditText) findViewById(R.id.editTextFullNameRegister);
         mEmail = (EditText) findViewById(R.id.editTextEmailRegister);
         mPassword = (EditText) findViewById(R.id.editTextPasswordRegister);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBarRegister);

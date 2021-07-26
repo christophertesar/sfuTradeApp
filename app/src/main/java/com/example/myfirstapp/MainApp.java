@@ -35,6 +35,7 @@ public class MainApp extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
         getSupportActionBar().setTitle("Dashboard");
 
+        openSearch();
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -106,6 +107,17 @@ public class MainApp extends AppCompatActivity {
 //            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         return true;
+    }
+
+    public void openSearch(){
+        Button btn_search = (Button) findViewById(R.id.btn_search1);
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainApp.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

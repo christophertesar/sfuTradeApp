@@ -98,15 +98,25 @@
         android:elevation="8dp"
         android:background="@drawable/bg_searchview" >
 
-        <EditText
+<!--        <EditText-->
+<!--            android:id="@+id/btn_search1"-->
+<!--            android:layout_width="280dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#FFF"-->
+<!--            android:hint="@string/search_bar"-->
+<!--            android:textSize="15sp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="15dp" />-->
+
+        <Button
+            android:id="@+id/btn_search1"
             android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:layout_height="30dp"
+            android:background="#FFFFFF"
             android:hint="@string/search_bar"
             android:textSize="15sp"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp" />
-
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"

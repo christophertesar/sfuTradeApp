@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/relLayout1"
-                android:background="#202F65">
+                android:background="#FDA50F" >
 
 
                 <ImageView
@@ -202,14 +202,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/relLayout8"
-                        android:background="#202F65"
+                        android:background="#FDA50F"
                         android:layout_marginTop="10dp">
 
                         <Button
-                            android:backgroundTint="#202F65"
+                            android:backgroundTint="#0F67FD"
                             android:id="@+id/btn_post"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="35dp"
                             android:textColor="@android:color/white"

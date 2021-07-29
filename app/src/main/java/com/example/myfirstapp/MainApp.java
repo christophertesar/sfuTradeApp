@@ -35,7 +35,7 @@ public class MainApp extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
         getSupportActionBar().setTitle("Dashboard");
 
-        openSearch();
+//        openSearch();
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =

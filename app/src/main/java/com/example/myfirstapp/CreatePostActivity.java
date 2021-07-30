@@ -1,34 +1,52 @@
-/*package com.example.myfirstapp;
+//package com.example.myfirstapp;
+//
+//import android.content.Intent;
+//import android.os.Bundle;
+//import android.content.Context;
+//import androidx.annotation.Nullable;
+//import androidx.fragment.app.Fragment;
+//import android.util.Log;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.view.WindowManager;
+//import android.widget.Button;
+//import android.widget.EditText;
+//import android.widget.ImageView;
+//import android.widget.ProgressBar;
+//import com.example.myfirstapp.UniversalImageLoader;
+//
+//import androidx.appcompat.app.AppCompatActivity;
+
+
+//public class CreatePostActivity extends AppCompatActivity {
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.forum_post);
+//    }
+//
+//}
+
+
+package com.example.myfirstapp;
 
 import android.content.Intent;
+
+import android.media.Image;
 import android.os.Bundle;
-import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.example.myfirstapp.UniversalImageLoader;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class CreatePostActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.forum_post);
-    }
-
-}
-public class CreatePostActivity extends AppCompatActivity{
-
     private static final String TAG = "PostFragment";
 
     //widgets
@@ -37,28 +55,25 @@ public class CreatePostActivity extends AppCompatActivity{
     private Button mPost;
     private ProgressBar mProgressBar;
 
-    //vars
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.forum_post, container, false);
-        mPostImage = view.findViewById(R.id.post_image);
-        mTitle = view.findViewById(R.id.input_title);
-        mDescription = view.findViewById(R.id.input_description);
-        mPrice = view.findViewById(R.id.input_price);
-        mCountry = view.findViewById(R.id.input_country);
-        mStateProvince = view.findViewById(R.id.input_state_province);
-        mCity = view.findViewById(R.id.input_city);
-        mContactEmail = view.findViewById(R.id.input_email);
-        mPost = view.findViewById(R.id.btn_post);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.forum_post);
 
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        mPostImage = findViewById(R.id.post_image);
+        mTitle = findViewById(R.id.input_title);
+        mDescription = findViewById(R.id.input_description);
+        mPrice = findViewById(R.id.input_price);
+//        mCountry = findViewById(R.id.input_country);
+//        mStateProvince = findViewById(R.id.input_state_province);
+//        mCity = findViewById(R.id.input_city);
+        mContactEmail = findViewById(R.id.input_email);
+        mPost = findViewById(R.id.btn_post);
+        mProgressBar = findViewById(R.id.progressBar);
 
-        return view;
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
     }
-
     private void init(){
 
         mPostImage.setOnClickListener(new View.OnClickListener() {
@@ -97,25 +112,8 @@ public class CreatePostActivity extends AppCompatActivity{
      * @param string
      * @return
      */
-    /*private boolean isEmpty(String string){
+    private boolean isEmpty(String string){
         return string.equals("");
     }
-}
-*/
 
-package com.example.myfirstapp;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-
-public class CreatePostActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.forum_post);
-    }
 }

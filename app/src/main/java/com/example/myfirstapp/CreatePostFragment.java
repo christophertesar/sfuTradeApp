@@ -1,5 +1,4 @@
 //package com.example.myfirstapp;
-//
 //import android.os.Bundle;
 //import android.view.LayoutInflater;
 //import android.view.View;
@@ -13,7 +12,7 @@
 //    public CreatePostFragment() {}
 //
 
-import androidx.annotation.Nullable;
+
 
 //@Override
 //public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +41,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.example.myfirstapp.UniversalImageLoader;
+import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -127,4 +127,4 @@ public class CreatePostFragment extends Fragment{
     private boolean isEmpty(String string){
         return string.equals("");
     }
-//}
+}

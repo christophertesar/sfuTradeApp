@@ -30,12 +30,48 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Queue;
 
-public class SearchActivity extends AppCompatActivity {
+//Victor's implementation
+//public class SearchActivity extends AppCompatActivity {
 //    DatabaseReference databaseReference;
 //    ArrayList<Posts> list;
 //    RecyclerView recyclerView;
 //    SearchView searchView;
 
+
+
+//import android.*;
+//import android.Manifest;
+//import android.content.pm.PackageManager;
+//import android.os.Bundle;
+//import androidx.annotation.NonNull;
+//import androidx.annotation.Nullable;
+//import android.net.Uri;
+//import android.os.Bundle;
+//
+//import com.google.android.material.tabs.TabLayout;
+//import androidx.core.app.ActivityCompat;
+//import androidx.core.content.ContextCompat;
+//import androidx.viewpager.widget.ViewPager;
+//import androidx.appcompat.app.AppCompatActivity;
+//import android.util.Log;
+//import android.widget.SectionIndexer;
+//import android.widget.TableLayout;
+//
+//
+//import com.example.myfirstapp.SectionsPagerAdapter;
+
+
+public class SearchActivity extends AppCompatActivity {
+
+//    private static final String TAG = "SearchActivity";
+//    private static final int REQUEST_CODE = 1;
+//
+//    //widgets
+//    private TabLayout mTabLayout;
+//    public ViewPager mViewPager;
+//
+//    //vars
+//    public SectionsPagerAdapter mPagerAdapter;
 
     EditText inputSearch;
     RecyclerView recyclerView;
@@ -44,46 +80,10 @@ public class SearchActivity extends AppCompatActivity {
     FirebaseRecyclerAdapter<Posts, MyViewHolder> adapter;
     DatabaseReference dataRef;
 
-=======
-import android.*;
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import android.net.Uri;
-import android.os.Bundle;
-
-import com.google.android.material.tabs.TabLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.SectionIndexer;
-import android.widget.TableLayout;
-
-
-import com.example.myfirstapp.SectionsPagerAdapter;
-
-
-public class SearchActivity extends AppCompatActivity {
-
-    private static final String TAG = "SearchActivity";
-    private static final int REQUEST_CODE = 1;
-
-    //widgets
-    private TabLayout mTabLayout;
-    public ViewPager mViewPager;
-
-    //vars
-    public SectionsPagerAdapter mPagerAdapter;
->>>>>>> Feature_Branch
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
+
         setContentView(R.layout.search2);
 
         dataRef = FirebaseDatabase.getInstance().getReference().child("Posts");
@@ -91,7 +91,6 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.result_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
-
 
 
         LoadData("");
@@ -110,8 +109,7 @@ public class SearchActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (s.toString() != null) {
                     LoadData(s.toString());
-                }
-                else {
+                } else {
                     LoadData("");  //means nothing has been typed
                 }
             }
@@ -119,12 +117,11 @@ public class SearchActivity extends AppCompatActivity {
         //next step is a btn listener where it user will open up the post into a PostViewActivity
 
 
-
-
 //        databaseReference = FirebaseDatabase.getInstance().getReference().child("Posts");
 //        recyclerView = findViewById(R.id.result_view);
 //        searchView = findViewById(R.id.search_view);
     }
+
 
     private void LoadData(String data) {
         Query query = dataRef.orderByChild("title").startAt(data).endAt(data+"\uf8ff");
@@ -149,32 +146,9 @@ public class SearchActivity extends AppCompatActivity {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        if (databaseReference != null){
-//            databaseReference.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    if (snapshot.exists())
-//                    {
-//                        for (DataSnapshot ds: snapshot.getChildren())
-//                        {
-//                            list.add(ds.getValue(Posts.class));
-//                        }
-//                        AdapterClass adapterClass = new AdapterClass(list);
-//                        recyclerView.setAdapter(adapterClass);
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Toast.makeText(SearchActivity.this, "SearchActivity error!", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-//    }
 
+
+    //Victor implementation
 //        setContentView(R.layout.activity_search);
 //        mTabLayout = (TabLayout) findViewById(R.id.tabs);
 //        mViewPager  = (ViewPager) findViewById(R.id.viewpager_container);

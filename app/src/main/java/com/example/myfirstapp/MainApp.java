@@ -56,10 +56,12 @@ public class MainApp extends AppCompatActivity {
 
                         case R.id.nav_post:
                             selectedFragment = new PostFragment();
-                            getSupportActionBar().setTitle("Post");
-                            getSupportActionBar().hide();
-
-                            break;
+//                            getSupportActionBar().setTitle("Post");
+//                            getSupportActionBar().hide();
+                            Intent intent = new Intent(MainApp.this, CreatePostActivity.class);
+                            startActivity(intent);
+                            return false;
+//                            break;
 
                         case R.id.nav_market:
                             selectedFragment = new MarketFragment();

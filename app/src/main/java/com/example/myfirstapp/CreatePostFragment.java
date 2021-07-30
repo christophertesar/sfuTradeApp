@@ -1,22 +1,29 @@
-/*package com.example.myfirstapp;
+//package com.example.myfirstapp;
+//import android.os.Bundle;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//
+//import androidx.annotation.Nullable;
+//import androidx.fragment.app.Fragment;
+//
+////creates an activity for the Post fill-form. The [Post] Want to Sell Button calls to this activity.
+//public class CreatePostFragment extends Fragment {
+//    public CreatePostFragment() {}
+//
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-//creates an activity for the Post fill-form. The [Post] Want to Sell Button calls to this activity.
-public class CreatePostFragment extends Fragment {
-    public CreatePostFragment() {}
+//@Override
+//public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+//
+//        View v = inflater.inflate(R.layout.fragment_post_createpost, container, false);
+//
+//        return v;
+//        }
+//}
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_post_createpost, container, false);
-    }
-}*/
 package com.example.myfirstapp;
 
 import android.content.Intent;
@@ -34,6 +41,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.example.myfirstapp.UniversalImageLoader;
+import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AppCompatActivity;
 

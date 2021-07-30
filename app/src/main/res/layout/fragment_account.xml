@@ -17,8 +17,8 @@
         android:id="@+id/email_address_title"
         android:layout_below="@id/FullName"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@android:color/darker_gray"
+        android:layout_height="30dp"
+        android:background="#FED48D"
         android:paddingLeft="15dp"
         android:layout_marginTop="10dp"
         android:text="@string/email_address"
@@ -35,8 +35,8 @@
     <TextView
         android:id="@+id/FullName_title"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@android:color/darker_gray"
+        android:layout_height="30dp"
+        android:background="#FED48D"
         android:layout_marginTop="100dp"
         android:paddingLeft="15dp"
         android:text="@string/full_name"
@@ -66,6 +66,7 @@
         android:layout_height="60dp"
         android:layout_centerInParent="true"
         android:hint="@string/signout"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="100dp"
+        android:background="#8DB7FE"/>
 
 </RelativeLayout>

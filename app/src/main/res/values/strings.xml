@@ -22,4 +22,6 @@
     <string name="full_name">Full Name</string>
     <string name="register">Register</string>
 
+    <string name="dialog_select_photo">SelectPhoto</string>
+
 </resources>

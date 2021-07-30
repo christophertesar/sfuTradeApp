@@ -23,4 +23,6 @@
     <string name="register">Register</string>
     <string name="description">Description</string>
 
+    <string name="dialog_select_photo">SelectPhoto</string>
+
 </resources>

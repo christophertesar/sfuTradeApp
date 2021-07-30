@@ -5,19 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/search_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        app:queryHint="@string/search_bar"/>-->
+
+    <EditText
+        android:id="@+id/ET_search"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="Search..."
         android:padding="10dp"
-        android:layout_margin="5dp"
-        app:queryHint="@string/search_bar"/>
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:background="@drawable/bg_searchview"
+        android:drawableRight="@drawable/ic_search"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
+        android:padding="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

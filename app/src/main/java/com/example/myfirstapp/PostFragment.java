@@ -23,7 +23,9 @@ public class PostFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_post, container, false);
+        View v =  inflater.inflate(R.layout.forum_post, container, false);
+
+
 
         //Will change the screen to the fill-in form screen of a create Want to Sell Post
 //        Button btn_wts = v.findViewById(R.id.btn_WTS_post);
@@ -35,13 +37,13 @@ public class PostFragment extends Fragment {
 //            }
 //        });
 
-        Button btn_wts = v.findViewById(R.id.btn_WTS_post);
-        btn_wts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(),CreatePostActivity.class));
-            }
-        });
+//        Button btn_wts = v.findViewById(R.id.btn_WTS_post);
+//        btn_wts.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(),CreatePostActivity.class));
+//            }
+//        });
         return v;
     }
 }

@@ -48,16 +48,20 @@ public class MainApp extends AppCompatActivity {
                         case R.id.nav_dashboard:
                             selectedFragment = new DashboardFragment();
                             getSupportActionBar().setTitle("Dashboard");
+                            getSupportActionBar().show();
                             break;
 
                         case R.id.nav_post:
                             selectedFragment = new PostFragment();
                             getSupportActionBar().setTitle("Post");
+                            getSupportActionBar().hide();
+
                             break;
 
                         case R.id.nav_market:
                             selectedFragment = new MarketFragment();
                             getSupportActionBar().setTitle("Marketplace");
+                            getSupportActionBar().show();
                             break;
                     }
 

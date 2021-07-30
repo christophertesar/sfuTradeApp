@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
+//Main app screen activities
 public class MainApp extends AppCompatActivity {
     public Button btn;
     @Override
@@ -27,9 +27,11 @@ public class MainApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        //setting up the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //executing the bottom navigation
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
@@ -38,6 +40,7 @@ public class MainApp extends AppCompatActivity {
 //        openSearch();
     }
 
+    // for bottom navigation of the dashboard, post, and marketplace
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override

@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Lead to Register screen when 'Register' button is clicked
         btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -175,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Lead to Login screen when 'Signout' button is clicked
         btnSignOut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

@@ -37,6 +37,7 @@ public class MainApp extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
         getSupportActionBar().setTitle("Dashboard");
 
+//        openSearch();
     }
 
     // for bottom navigation of the dashboard, post, and marketplace
@@ -50,16 +51,22 @@ public class MainApp extends AppCompatActivity {
                         case R.id.nav_dashboard:
                             selectedFragment = new DashboardFragment();
                             getSupportActionBar().setTitle("Dashboard");
+                            getSupportActionBar().show();
                             break;
 
                         case R.id.nav_post:
                             selectedFragment = new PostFragment();
-                            getSupportActionBar().setTitle("Post");
-                            break;
+//                            getSupportActionBar().setTitle("Post");
+//                            getSupportActionBar().hide();
+                            Intent intent = new Intent(MainApp.this, CreatePostActivity.class);
+                            startActivity(intent);
+                            return false;
+//                            break;
 
                         case R.id.nav_market:
                             selectedFragment = new MarketFragment();
                             getSupportActionBar().setTitle("Marketplace");
+                            getSupportActionBar().show();
                             break;
                     }
 
@@ -109,6 +116,17 @@ public class MainApp extends AppCompatActivity {
 //            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         return true;
+    }
+
+    public void openSearch(){
+        Button btn_search = (Button) findViewById(R.id.btn_search1);
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainApp.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

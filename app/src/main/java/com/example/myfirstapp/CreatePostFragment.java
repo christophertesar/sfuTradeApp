@@ -66,9 +66,9 @@ public class CreatePostFragment extends Fragment{
         mTitle = view.findViewById(R.id.input_title);
         mDescription = view.findViewById(R.id.input_description);
         mPrice = view.findViewById(R.id.input_price);
-        mCountry = view.findViewById(R.id.input_country);
-        mStateProvince = view.findViewById(R.id.input_state_province);
-        mCity = view.findViewById(R.id.input_city);
+        //mCountry = view.findViewById(R.id.input_country);
+        //mStateProvince = view.findViewById(R.id.input_state_province);
+        //mCity = view.findViewById(R.id.input_city);
         mContactEmail = view.findViewById(R.id.input_email);
         mPost = view.findViewById(R.id.btn_post);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);

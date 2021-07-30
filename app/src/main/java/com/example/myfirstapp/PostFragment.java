@@ -1,6 +1,8 @@
 package com.example.myfirstapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,9 +57,26 @@ import com.example.myfirstapp.UniversalImageLoader;
     }
 }*/
 
-public class PostFragment extends Fragment{
+public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoSelectedListener{
 
     private static final String TAG = "PostFragment";
+
+
+    @Override
+    public void getImagePath(Uri imagePath) {
+        UniversalImageLoader.setImage(imagePath.toString(),mPostImage);
+
+        mSelectedBitmap = null;
+        mSelectedUri = imagePath;
+    }
+
+    @Override
+    public void getImageBitmap(Bitmap bitmap) {
+        mPostImage.setImageBitmap(bitmap);
+
+        mSelectedUri = null;
+        mSelectedBitmap = bitmap;
+    }
 
     //widgets
     private ImageView mPostImage;
@@ -66,6 +85,8 @@ public class PostFragment extends Fragment{
     private ProgressBar mProgressBar;
 
     //vars
+    private Bitmap mSelectedBitmap;
+    private Uri mSelectedUri;
 
     @Nullable
     @Override
@@ -93,7 +114,9 @@ public class PostFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: opening dialog to choose new photo");
-
+                SelectPhotoDialog dialog = new SelectPhotoDialog();
+                dialog.show(getParentFragmentManager(), getString(R.string.dialog_select_photo));
+                dialog.setTargetFragment(PostFragment.this, 1);
             }
         });
     }
@@ -128,4 +151,6 @@ public class PostFragment extends Fragment{
     private boolean isEmpty(String string){
         return string.equals("");
     }
+
+
 }

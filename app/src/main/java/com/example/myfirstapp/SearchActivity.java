@@ -125,14 +125,15 @@ public class SearchActivity extends AppCompatActivity {
 
     private void LoadData(String data) {
         Query query = dataRef.orderByChild("title").startAt(data).endAt(data+"\uf8ff");
-
         options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(query, Posts.class).build();
         adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
+
                 holder.postid.setText(model.getTitle());
                 holder.desc.setText(model.getDescription());
 //                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
+
             }
 
             @NonNull

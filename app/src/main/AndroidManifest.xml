@@ -29,6 +29,7 @@
             android:parentActivityName=".MainApp">
         </activity>
         <activity android:name=".SearchActivity" />
+        <activity android:name=".ActivityPostView" />
 
     </application>
 

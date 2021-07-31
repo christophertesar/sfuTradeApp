@@ -28,7 +28,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="100dp"
             android:padding="10dp"
-            android:text="POST TITLE"
+            android:text="@string/post_title"
             android:textStyle="bold"/>
 
         <TextView

@@ -132,6 +132,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 holder.postid.setText(model.getTitle());
                 holder.desc.setText(model.getDescription());
+                holder.price.setText(model.getPrice());
 //                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
 
             }

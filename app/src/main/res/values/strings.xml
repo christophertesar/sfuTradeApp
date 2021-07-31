@@ -27,5 +27,7 @@
     <string name="description">Description</string>
     <string name="price">Price</string>
     <string name="name">Name</string>
+    <string name="other">Other</string>
+    <string name="title">Title</string>
 
 </resources>

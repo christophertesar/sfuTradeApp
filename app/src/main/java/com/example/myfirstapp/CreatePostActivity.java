@@ -27,7 +27,7 @@
 //    }
 //
 //}
-
+//
 
 package com.example.myfirstapp;
 
@@ -51,7 +51,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
     //widgets
     private ImageView mPostImage;
-    private EditText mTitle, mDescription, mPrice, mCountry, mStateProvince, mCity, mContactEmail;
+    private EditText mTitle, mDescription, mPrice, mCampus, mCell, mContactEmail, mOther;
     private Button mPost;
     private ProgressBar mProgressBar;
 
@@ -65,14 +65,15 @@ public class CreatePostActivity extends AppCompatActivity {
         mTitle = findViewById(R.id.input_title);
         mDescription = findViewById(R.id.input_description);
         mPrice = findViewById(R.id.input_price);
-//        mCountry = findViewById(R.id.input_country);
-//        mStateProvince = findViewById(R.id.input_state_province);
-//        mCity = findViewById(R.id.input_city);
+        mCampus = findViewById(R.id.input_campus);
         mContactEmail = findViewById(R.id.input_email);
+        mCell = findViewById(R.id.input_cell);
+        mOther = findViewById(R.id.input_other);
         mPost = findViewById(R.id.btn_post);
         mProgressBar = findViewById(R.id.progressBar);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        init();
     }
     private void init(){
 
@@ -80,20 +81,24 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: opening dialog to choose new photo");
-
+                openDialog();
             }
         });
     }
 
+    public void openDialog(){
+        SelectPhotoDialog temp = new SelectPhotoDialog();
+        temp.show(getSupportFragmentManager(),"Test");
+    }
     private void resetFields(){
         UniversalImageLoader.setImage("", mPostImage);
         mTitle.setText("");
         mDescription.setText("");
         mPrice.setText("");
-        mCountry.setText("");
-        mStateProvince.setText("");
-        mCity.setText("");
+        mCampus.setText("");
+        mCell.setText("");
         mContactEmail.setText("");
+        mOther.setText("");
     }
 
     private void showProgressBar(){
@@ -117,3 +122,4 @@ public class CreatePostActivity extends AppCompatActivity {
     }
 
 }
+

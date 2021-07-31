@@ -10,6 +10,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 //    public MyViewHolder(@NonNull View itemView) {
 //        super(itemView);
 //    }
+    View v;
     TextView postid, desc;
 //    ImageView img;
     public MyViewHolder(@NonNull View itemView) {
@@ -17,6 +18,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         postid = itemView.findViewById(R.id.postID);
         desc = itemView.findViewById(R.id.description);
 //            img = itemView.findViewById(R.id.post_image);
+        v = itemView;
     }
 
 }

@@ -31,8 +31,10 @@
 
 package com.example.myfirstapp;
 
+import android.Manifest;
 import android.content.Intent;
 
+import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,11 +45,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.example.myfirstapp.UniversalImageLoader;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 public class CreatePostActivity extends AppCompatActivity {
     private static final String TAG = "PostFragment";
+    private static final int REQUEST_CODE = 2;
 
     //widgets
     private ImageView mPostImage;
@@ -74,6 +81,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         init();
+        verifyPermissions();
     }
     private void init(){
 
@@ -119,6 +127,29 @@ public class CreatePostActivity extends AppCompatActivity {
      */
     private boolean isEmpty(String string){
         return string.equals("");
+    }
+
+    private void verifyPermissions(){
+        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA};
+
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[1]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[2]) == PackageManager.PERMISSION_GRANTED){
+
+        }else{
+            ActivityCompat.requestPermissions(CreatePostActivity.this,
+                    permissions, REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        verifyPermissions();
     }
 
 }

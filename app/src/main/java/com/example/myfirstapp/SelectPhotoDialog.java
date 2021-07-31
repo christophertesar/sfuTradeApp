@@ -87,7 +87,7 @@ public class SelectPhotoDialog extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         try{
-            mOnPhotoSelectedListener = (OnPhotoSelectedListener) getTargetFragment();
+            mOnPhotoSelectedListener = (OnPhotoSelectedListener) this.getContext();
         }catch (ClassCastException e){
             Log.e(TAG, "onAttach: ClassCastException: " + e.getMessage() );
         }

@@ -162,8 +162,8 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
     public void openDialog(){
         SelectPhotoDialog temp = new SelectPhotoDialog();
         temp.show(getSupportFragmentManager(),"SelectPhotoDialog");
-        TextView mTemp = findViewById(R.id.temp_text);
-        mTemp.setVisibility(View.INVISIBLE);
+        TextView insertPhotoTxt = findViewById(R.id.fp_insert_photo_txt);
+        insertPhotoTxt.setVisibility(View.INVISIBLE);
     }
     private void resetFields(){
         UniversalImageLoader.setImage("", mPostImage);

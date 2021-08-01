@@ -18,7 +18,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/relLayout1"
                 android:background="#FDA50F" >
-                    />
+
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
@@ -26,7 +26,9 @@
                     android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_foreground"/>
+                    android:elevation="80dp"
+                    android:paddingStart="7dp"
+                    android:src="@drawable/ic_add_photo_white"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -34,8 +36,7 @@
                     android:layout_marginTop="125dp"
                     android:text="Insert photo here"
                     android:textColor="@android:color/white"
-                    android:id="@+id/temp_text"
-                    />
+                    android:id="@+id/fp_insert_photo_txt" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -218,7 +219,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="120dp"
                         android:layout_below="@+id/relLayout8"
                         android:background="#FDA200"
                         android:outlineAmbientShadowColor="@color/browser_actions_bg_grey"

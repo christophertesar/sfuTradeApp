@@ -131,7 +131,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                        && !isEmpty(mContactEmail.getText().toString())
                        && !isEmpty(mPrice.getText().toString())
                        && !isEmpty(mCell.getText().toString())
-                       && !isEmpty(mOther.getText().toString())
+                       //&& !isEmpty(mOther.getText().toString())
                        && !isEmpty(mCampus.getText().toString())){
                    if(mSelectedBitmap != null && mSelectedUri == null){
                         uploadNewPhoto(mSelectedBitmap);

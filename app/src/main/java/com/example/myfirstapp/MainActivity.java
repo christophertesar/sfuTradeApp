@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     //UI
     private EditText mEmail, mPassword;
-    private Button btnSignIn, btnRegister, btnSignOut;
+    private Button btnSignIn, btnRegister;
     private ProgressBar mProgressBar;
 
     /**
@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.editTextTextPassword);
         btnSignIn = (Button) findViewById(R.id.button);
         btnRegister = (Button) findViewById(R.id.button2);
-        btnSignOut = (Button) findViewById(R.id.sign_out_btn);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.INVISIBLE);
 
@@ -176,15 +175,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Lead to Login screen when 'Signout' button is clicked
-        btnSignOut.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-
-                FirebaseAuth.getInstance().signOut();
-                toastMessage("Signed Out.");
-            }
-        });
     }
 }
 

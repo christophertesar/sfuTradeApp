@@ -1,6 +1,9 @@
 package com.example.myfirstapp;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class SelectPhotoDialog extends DialogFragment {
+public class SelectPhotoDialog extends DialogFragment{
+
     private static final String TAG = "SelectPhotoDialog";
     private static final int PICKFILE_REQUEST_CODE = 1234;
     private static final int CAMERA_REQUEST_CODE = 4321;
@@ -87,7 +91,7 @@ public class SelectPhotoDialog extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         try{
-            mOnPhotoSelectedListener = (OnPhotoSelectedListener) this.getContext();
+            mOnPhotoSelectedListener = (OnPhotoSelectedListener) getActivity();
         }catch (ClassCastException e){
             Log.e(TAG, "onAttach: ClassCastException: " + e.getMessage() );
         }

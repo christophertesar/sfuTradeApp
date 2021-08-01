@@ -35,7 +35,9 @@ import android.Manifest;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,7 +54,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 
-public class CreatePostActivity extends AppCompatActivity {
+public class CreatePostActivity extends AppCompatActivity implements SelectPhotoDialog.OnPhotoSelectedListener {
     private static final String TAG = "PostFragment";
     private static final int REQUEST_CODE = 2;
 
@@ -61,6 +63,9 @@ public class CreatePostActivity extends AppCompatActivity {
     private EditText mTitle, mDescription, mPrice, mCampus, mCell, mContactEmail, mOther;
     private Button mPost;
     private ProgressBar mProgressBar;
+
+    private Bitmap mSelectedBitmap;
+    private Uri mSelectedUri;
 
 
     @Override
@@ -96,7 +101,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
     public void openDialog(){
         SelectPhotoDialog temp = new SelectPhotoDialog();
-        temp.show(getSupportFragmentManager(),"Test");
+        temp.show(getSupportFragmentManager(),"SelectPhotoDialog");
     }
     private void resetFields(){
         UniversalImageLoader.setImage("", mPostImage);
@@ -150,6 +155,24 @@ public class CreatePostActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
         verifyPermissions();
+    }
+
+    @Override
+    public void getImagePath(Uri imagePath) {
+        Log.d(TAG, "getImagePath: setting the image to imageview");
+        UniversalImageLoader.setImage(imagePath.toString(), mPostImage);
+        //assign to global variable
+        mSelectedBitmap = null;
+        mSelectedUri = imagePath;
+    }
+
+    @Override
+    public void getImageBitmap(Bitmap bitmap) {
+        Log.d(TAG, "getImageBitmap: setting the image to imageview");
+        mPostImage.setImageBitmap(bitmap);
+        //assign to a global variable
+        mSelectedUri = null;
+        mSelectedBitmap = bitmap;
     }
 
 }

@@ -31,5 +31,11 @@
     <string name="title">Title</string>
     <string name="personal_listings">Personal Listings</string>
     <string name="delete">delete</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="preferred_campus">Preferred Campus</string>
+    <string name="insert_photo_here">Insert photo here</string>
+    <string name="other_optional">Other (Optional)</string>
+    <string name="other_informations">Other Informations</string>
 
 </resources>

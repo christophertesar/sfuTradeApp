@@ -61,39 +61,29 @@ public class DashboardFragment extends Fragment {
 
         LoadData();
 
+
         return v;
     }
 
 
 
     private void LoadData() {
-//        Query query = dataRef.orderByChild("title").startAt(data).endAt(data+"\uf8ff");
-
-        options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(dataRef.child(userID).child("userPosts"), Posts.class).build();
+        dataRef = FirebaseDatabase.getInstance().getReference("Users").child(userID).child("userPosts");
+        options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(dataRef, Posts.class).build();
         adapter3 = new FirebaseRecyclerAdapter<Posts, MyViewHolderThree>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolderThree holder, int position, @NonNull Posts model) {
-//                final String PostName = dataRef.getParent;
 
-                final String postTitle = model.getTitle();
-                final String postPrice = model.getPrice();
-                final String postDescp = model.getDescription();
-//                final String postSellerName = model
-
+                String PostID = getRef(position).getKey();
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
 //                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
 
-                holder.v. setOnClickListener(new View.OnClickListener() {
+                holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), ActivityPostViewPersonal.class);
-                        intent.putExtra("PostID", getRef(position).getKey());
-
-                        intent.putExtra("postName",""+postTitle);
-                        intent.putExtra("postPrice",""+postPrice);
-                        intent.putExtra("postDescp",""+postDescp);
-
+                        intent.putExtra("PostID", PostID);
                         startActivity(intent);
                     }
                 });

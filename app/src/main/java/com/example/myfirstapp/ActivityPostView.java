@@ -29,41 +29,24 @@ public class ActivityPostView extends AppCompatActivity {
         description = findViewById(R.id.post_view_description);
         sellerName = findViewById(R.id.post_view_seller_name);
 
-        String post_title = getIntent().getStringExtra("postName");
-        String post_price = getIntent().getStringExtra("postPrice");
-        String post_descp = getIntent().getStringExtra("postDescp");
-//        String post_sellerName = getIntent().getStringExtra("postName");
-        postTitle.setText(post_title);
-        price.setText(post_price);
-        description.setText(post_descp);
+        String PostID = getIntent().getExtras().get("PostID").toString();
+        ref = FirebaseDatabase.getInstance().getReference().child("Posts").child(PostID);
 
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String post_title = snapshot.child("title").getValue().toString();
+                String post_price = snapshot.child("price").getValue().toString();
+                String post_descp = snapshot.child("description").getValue().toString();
+                postTitle.setText(post_title);
+                price.setText(post_price);
+                description.setText(post_descp);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-
-
-//        ref = FirebaseDatabase.getInstance().getReference().child("Posts");
-//        String PostID = getIntent().getStringExtra("PostID");
-//        ref.child(PostID).addValueEventListener(new ValueEventListener() {   //need to get PostName as the ID , eg. Post1
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.exists()) {
-//                    String post_title = snapshot.child("title").getValue().toString();
-//                    String post_price = snapshot.child("price").getValue().toString();
-//                    String post_descp = snapshot.child("description").getValue().toString();
-//                    String post_sellerName = snapshot.child("sellerName").getValue().toString();
-//
-////                    Picasso.get().load(ImageUrl).into(imageView);
-//                    postTitle.setText(post_title);
-//                    price.setText(post_price);
-//                    description.setText(post_descp);
-//                    sellerName.setText(post_sellerName);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+            }
+        });
     }
 }

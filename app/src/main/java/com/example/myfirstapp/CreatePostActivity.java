@@ -54,6 +54,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 import com.example.myfirstapp.UniversalImageLoader;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -85,7 +86,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
 
     //widgets
     private ImageView mPostImage;
-    private EditText mTitle, mDescription, mPrice, mCampus, mCell, mContactEmail, mOther, mPhoneNumber;
+    private EditText mTitle, mDescription, mPrice, mCampus, mCell, mContactEmail, mOther;
     private Button mPost;
     private ProgressBar mProgressBar;
 
@@ -214,7 +215,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.child("name").getValue().toString();
-                post.setSellerName(name);
+                post.setName(name);
             }
 
             @Override
@@ -235,6 +236,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                 Toast.makeText(getApplicationContext(), "Upload success!", Toast.LENGTH_SHORT).show();
 
                 //download url storage
+//                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
@@ -246,6 +248,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                         post.setTitle(mTitle.getText().toString());
                         post.setOther(mOther.getText().toString());
                         post.setDescription(mDescription.getText().toString());
+                        post.setCell(mCell.getText().toString());
                         post.setPost_id(postID);
                         post.setPrice("$"+mPrice.getText().toString());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());

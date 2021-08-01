@@ -6,13 +6,6 @@
     android:orientation="vertical"
     android:background="#89cfef">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Dashboard"-->
-<!--        android:textSize="30sp"-->
-<!--        android:layout_centerInParent="true" />-->
-
     <ImageView
         android:id="@+id/db_profile_pic"
         android:layout_width="80dp"

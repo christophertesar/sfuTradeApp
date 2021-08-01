@@ -38,6 +38,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,7 +47,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.example.myfirstapp.UniversalImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,6 +78,8 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_post);
 
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(CreatePostActivity.this));
+
         mPostImage = findViewById(R.id.post_image);
         mTitle = findViewById(R.id.input_title);
         mDescription = findViewById(R.id.input_description);
@@ -97,11 +104,66 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                 openDialog();
             }
         });
+        mPost.setOnClickListener(new View.OnClickListener(){
+           @Override
+           public void onClick(View v){
+               Log.d(TAG, "onClick: attempting to post...");
+               if(!isEmpty(mTitle.getText().toString())
+                       && !isEmpty(mDescription.getText().toString())
+                       && !isEmpty(mContactEmail.getText().toString())
+                       && !isEmpty(mPrice.getText().toString())
+                       && !isEmpty(mCell.getText().toString())
+                       && !isEmpty(mOther.getText().toString())
+                       && !isEmpty(mCampus.getText().toString())){
+                   if(mSelectedBitmap != null && mSelectedUri == null){
+                        uploadNewPhoto(mSelectedBitmap);
+                   }
+                   else if(mSelectedUri != null && mSelectedBitmap == null){
+                        uploadNewPhoto(mSelectedUri);
+                   }
+               }
+           }
+        });
+    }
+
+    private void uploadNewPhoto(Bitmap bitmap){
+
+    }
+
+    private void uploadNewPhoto(Uri imagePath){
+
+    }
+
+    public class BackgroundImageResize extends AsyncTask<Uri, Integer, byte[]> {
+        Bitmap bitmap;
+
+        public BackgroundImageResize(Bitmap bitmap){
+            if(bitmap != null){
+                this.bitmap = bitmap;
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(byte[] bytes) {
+            super.onPostExecute(bytes);
+        }
+
+        @Override
+        protected byte[] doInBackground(Uri... uris) {
+            return new byte[0];
+        }
     }
 
     public void openDialog(){
         SelectPhotoDialog temp = new SelectPhotoDialog();
         temp.show(getSupportFragmentManager(),"SelectPhotoDialog");
+        TextView mTemp = findViewById(R.id.temp_text);
+        mTemp.setVisibility(View.INVISIBLE);
     }
     private void resetFields(){
         UniversalImageLoader.setImage("", mPostImage);

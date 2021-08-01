@@ -15,7 +15,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/register_new_account"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.118"
@@ -81,7 +82,8 @@
 
     <Button
         android:id="@+id/registerButton"
-        style="@style/Widget.AppCompat.Button.Colored"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/colorSecondary"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:text="@string/register"

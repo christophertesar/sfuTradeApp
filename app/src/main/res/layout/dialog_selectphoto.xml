@@ -9,7 +9,8 @@
         android:textSize="15sp"
         android:textColor="@android:color/black"
         android:id="@+id/dialogChoosePhoto"
-        android:gravity="center_vertical"/>
+        android:gravity="center_vertical"
+        android:background="@color/colorSecondary"/>
 
 
     <TextView
@@ -20,5 +21,6 @@
         android:textColor="@android:color/black"
         android:id="@+id/dialogOpenCamera"
         android:gravity="center_vertical"
-        android:layout_below="@+id/dialogChoosePhoto"/>
+        android:layout_below="@+id/dialogChoosePhoto"
+        android:background="@color/colorSecondary"/>
 </RelativeLayout>

@@ -113,7 +113,7 @@
             android:layout_height="47dp"
             android:background="#FFFFFF"
             android:drawableRight="@drawable/ic_search"
-            android:backgroundTint="@color/colourLightYellow"
+            android:backgroundTint="@color/colorAccent2"
             android:hint="@string/search_bar"
             android:elevation="100dp"
             android:textSize="17sp"

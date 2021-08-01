@@ -24,7 +24,8 @@
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:background="@drawable/bg_searchview"
-        android:drawableRight="@drawable/ic_search"/>
+        android:drawableRight="@drawable/ic_search"
+        android:backgroundTint="@color/colorAccent2"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_view"

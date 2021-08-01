@@ -225,7 +225,6 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         });
 
 
-
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                     .child("posts").child(postID);
 
@@ -236,7 +235,6 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                 Toast.makeText(getApplicationContext(), "Upload success!", Toast.LENGTH_SHORT).show();
 
                 //download url storage
-//                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {

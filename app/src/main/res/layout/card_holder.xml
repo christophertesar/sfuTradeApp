@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/post_image"
+            android:id="@+id/post_image1"
             android:layout_width="115dp"
             android:layout_height="120dp"
             android:src="@drawable/ic_account_circle"

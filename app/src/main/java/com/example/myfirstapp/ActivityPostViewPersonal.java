@@ -28,7 +28,6 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
     ImageView imageView;
     TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber;
     DatabaseReference ref, dataRef, nameRef;
-//    StorageReference storageRef;  //for img
     String userID, PostID;
 
     @Override
@@ -39,7 +38,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
         postTitle = findViewById(R.id.post_view_personal_post_title);
         price = findViewById(R.id.post_view_personal_price);
         description = findViewById(R.id.post_view_personal_description);
-//        sellerName = findViewById(R.id.post_view_personal_seller_name);
+        sellerName = findViewById(R.id.post_view_personal_seller_name);
         campus = findViewById(R.id.post_view_personal_campus);
         mOther = findViewById(R.id.post_view_personal_other);
         email = findViewById(R.id.post_view_personal_email);
@@ -60,11 +59,11 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                     String post_title = snapshot.child("title").getValue().toString();
                     String post_price = snapshot.child("price").getValue().toString();
                     String post_descp = snapshot.child("description").getValue().toString();
-//                    String post_seller_name = snapshot.
                     String post_campus = snapshot.child("campus").getValue().toString();
                     String post_email = snapshot.child("email").getValue().toString();
                     String post_other = snapshot.child("other").getValue().toString();
-                    //                String post_phoneNumber = snapshot.child("")
+                    String post_phoneNumber = snapshot.child("cell").getValue().toString();
+                    String post_seller_name = snapshot.child("name").getValue().toString();
                     String post_img = snapshot.child("image").getValue().toString();
 
                     postTitle.setText(post_title);
@@ -73,7 +72,9 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                     campus.setText(post_campus);
                     email.setText(post_email);
                     mOther.setText(post_other);
-                    //                sellerName.setText(post_seller_name);
+                    sellerName.setText(post_seller_name);
+                    phoneNumber.setText(post_phoneNumber);
+
                     Picasso.get().load(post_img).into(imageView);
                 }
                 else{

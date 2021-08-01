@@ -128,6 +128,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
 
+                String PostID = getRef(position).getKey();
                 holder.postid.setText(model.getTitle());
                 holder.desc.setText(model.getDescription());
                 holder.price.setText(model.getPrice());
@@ -137,6 +138,7 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(SearchActivity.this, ActivityPostView.class);
+                        intent.putExtra("PostID", PostID);
                         startActivity(intent);
                     }
                 });

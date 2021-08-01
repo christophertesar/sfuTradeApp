@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 
 public class ActivityPostView extends AppCompatActivity {
     ImageView imageView;
-    TextView postTitle, price, description, sellerName, campus, mOther, email ;
+    TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber;
     DatabaseReference ref;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class ActivityPostView extends AppCompatActivity {
         mOther = findViewById(R.id.post_view_other);
         email = findViewById(R.id.post_view_email);
         imageView = findViewById(R.id.post_view_img);
+        phoneNumber = findViewById(R.id.post_view_phone_number);
 
         String PostID = getIntent().getExtras().get("PostID").toString();
         ref = FirebaseDatabase.getInstance().getReference().child("Posts").child(PostID);
@@ -39,23 +40,27 @@ public class ActivityPostView extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String post_title = snapshot.child("title").getValue().toString();
-                String post_price = snapshot.child("price").getValue().toString();
-                String post_descp = snapshot.child("description").getValue().toString();
-//                String post_seller_name = snapshot.child("name").getValue().toString();
-                String post_campus = snapshot.child("campus").getValue().toString();
-                String post_email = snapshot.child("email").getValue().toString();
-                String post_other = snapshot.child("other").getValue().toString();
-                String post_img = snapshot.child("image").getValue().toString();
+                if(snapshot.child("title").getValue() != null) {
+                    String post_title = snapshot.child("title").getValue().toString();
+                    String post_price = snapshot.child("price").getValue().toString();
+                    String post_descp = snapshot.child("description").getValue().toString();
+                    String post_seller_name = snapshot.child("name").getValue().toString();
+                    String post_campus = snapshot.child("campus").getValue().toString();
+                    String post_email = snapshot.child("email").getValue().toString();
+                    String post_other = snapshot.child("other").getValue().toString();
+                    String post_phoneNumber = snapshot.child("cell").getValue().toString();
+                    String post_img = snapshot.child("image").getValue().toString();
 
-                postTitle.setText(post_title);
-                price.setText(post_price);
-                description.setText(post_descp);
-                campus.setText(post_campus);
-                email.setText(post_email);
-                mOther.setText(post_other);
-//                sellerName.setText(post_seller_name);
-                Picasso.get().load(post_img).into(imageView);
+                    postTitle.setText(post_title);
+                    price.setText(post_price);
+                    description.setText(post_descp);
+                    campus.setText(post_campus);
+                    email.setText(post_email);
+                    mOther.setText(post_other);
+                    sellerName.setText(post_seller_name);
+                    phoneNumber.setText(post_phoneNumber);
+                    Picasso.get().load(post_img).into(imageView);
+                }
             }
 
             @Override

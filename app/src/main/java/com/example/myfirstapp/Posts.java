@@ -23,6 +23,7 @@ public class Posts {
         this.campus = campus;
         this.other = other;
         this.email = email;
+        this.name = name;
     }
 
     public Posts(){

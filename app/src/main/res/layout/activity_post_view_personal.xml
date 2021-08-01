@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colourLightYellow"
+    tools:context="com.example.myfirstapp.ActivityPostViewPersonal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <ImageView
+                android:id="@+id/post_view_personal_img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_person"
+                android:layout_margin="20dp"
+                android:elevation="10dp" />
+
+            <TextView
+                android:id="@+id/post_view_personal_post_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/post_title"
+                android:gravity="center_vertical"
+                android:background="#FFF"
+                android:elevation="15dp"
+                android:layout_below="@id/post_view_personal_img"
+                android:textSize="25sp"
+                android:textColor="#000"
+                android:textAllCaps="true"
+                android:paddingStart="10dp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/post_view_personal_price"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/post_view_personal_post_title"
+                android:background="#FFF"
+                android:elevation="15dp"
+                android:textAlignment="textEnd"
+                android:paddingEnd="10dp"
+                android:gravity="center"
+                android:hint="@string/price"
+                android:textSize="20sp"
+                android:textColor="#000"
+                tools:ignore="RtlCompat,RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/post_view_personal_descriptiontxt"
+                android:layout_below="@id/post_view_personal_price"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/description"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/post_view_personal_description"
+                android:layout_below="@id/post_view_personal_descriptiontxt"
+                android:background="#FFF"
+                android:elevation="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:maxHeight="500dp"
+                android:maxLines="8"
+                android:hint="@string/description"
+                android:padding="10dp"
+                android:textSize="25sp"/>
+
+            <!--    <RelativeLayout-->
+            <!--        android:layout_below="@id/post_view_description"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:layout_marginTop="10dp"-->
+            <!--        android:background="#FFF" >-->
+
+            <TextView
+                android:id="@+id/post_view_personal_contacttxt"
+                android:layout_below="@id/post_view_personal_description"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/colourLightYellow"
+                android:text="Sale Post by"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/post_view_personal_seller_name"
+                android:layout_below="@id/post_view_personal_contacttxt"
+                android:layout_width="match_parent"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="35dp"
+                android:background="#FFF"
+                android:elevation="15dp"
+                android:hint="@string/name"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/post_view_personal_delete_btn"
+                android:layout_below="@id/post_view_personal_seller_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_delete_btn"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="55dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/delete" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

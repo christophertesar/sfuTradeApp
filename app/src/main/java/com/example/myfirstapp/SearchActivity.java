@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -130,10 +131,28 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
 
+                final String postTitle = model.getTitle();
+                final String postPrice = model.getPrice();
+                final String postDescp = model.getDescription();
+
                 holder.postid.setText(model.getTitle());
                 holder.desc.setText(model.getDescription());
                 holder.price.setText(model.getPrice());
 //                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
+
+                holder.v. setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(SearchActivity.this, ActivityPostView.class);
+//                        intent.putExtra("PostID", getRef(position).getKey());
+                        intent.putExtra("postName",""+postTitle);
+                        intent.putExtra("postPrice",""+postPrice);
+                        intent.putExtra("postDescp",""+postDescp);
+
+                        startActivity(intent);
+                    }
+                });
+
 
             }
 

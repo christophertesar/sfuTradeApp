@@ -21,7 +21,6 @@
     <string name="password">Password</string>
     <string name="full_name">Full Name</string>
     <string name="register">Register</string>
-    <string name="description">Description</string>
 
     <string name="dialog_select_photo">SelectPhoto</string>
     <string name="post_title">POST TITLE</string>
@@ -30,5 +29,7 @@
     <string name="name">Name</string>
     <string name="other">Other</string>
     <string name="title">Title</string>
+    <string name="personal_listings">Personal Listings</string>
+    <string name="delete">delete</string>
 
 </resources>

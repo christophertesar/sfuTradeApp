@@ -47,6 +47,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.example.myfirstapp.UniversalImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -160,6 +162,8 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
     public void openDialog(){
         SelectPhotoDialog temp = new SelectPhotoDialog();
         temp.show(getSupportFragmentManager(),"SelectPhotoDialog");
+        TextView mTemp = findViewById(R.id.temp_text);
+        mTemp.setVisibility(View.INVISIBLE);
     }
     private void resetFields(){
         UniversalImageLoader.setImage("", mPostImage);

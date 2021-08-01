@@ -27,7 +27,15 @@
                     android:layout_centerHorizontal="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_foreground"/>
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="125dp"
+                    android:text="Insert photo here"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/temp_text"
+                    />
 
                 <RelativeLayout
                     android:layout_width="match_parent"

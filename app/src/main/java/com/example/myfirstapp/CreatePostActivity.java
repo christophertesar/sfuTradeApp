@@ -50,6 +50,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import android.widget.TextView;
+
 import com.example.myfirstapp.UniversalImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -254,6 +256,8 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
     public void openDialog(){
         SelectPhotoDialog temp = new SelectPhotoDialog();
         temp.show(getSupportFragmentManager(),"SelectPhotoDialog");
+        TextView mTemp = findViewById(R.id.temp_text);
+        mTemp.setVisibility(View.INVISIBLE);
     }
     private void resetFields(){
         UniversalImageLoader.setImage("", mPostImage);

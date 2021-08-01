@@ -22,7 +22,7 @@ import android.widget.TextView;
 public class SelectPhotoDialog extends DialogFragment{
 
     private static final String TAG = "SelectPhotoDialog";
-    private static final int PICKFILE_REQUEST_CODE = 1234;
+    private static final int PICKFILE_REQUEST_CODE = 1234; //Random Request Codes, any number works
     private static final int CAMERA_REQUEST_CODE = 4321;
 
     public interface OnPhotoSelectedListener{
@@ -59,13 +59,20 @@ public class SelectPhotoDialog extends DialogFragment{
         return view;
     }
 
+    /**
+     * Depending on the requestCode, the method will handle either a photo from memory or
+     * a photo from your camera.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        /*
-            Results when selecting a new image from memory
-         */
+
+            //Taking new image from memory
+
         if(requestCode == PICKFILE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             Uri selectedImageUri = data.getData();
             Log.d(TAG, "onActivityResult: image uri: " + selectedImageUri);
@@ -74,9 +81,9 @@ public class SelectPhotoDialog extends DialogFragment{
             mOnPhotoSelectedListener.getImagePath(selectedImageUri);
             getDialog().dismiss();
         }
-        /*
-            Results when taking a new photo with camera
-         */
+
+            //Taking a new photo with camera
+
         else if(requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             Log.d(TAG, "onActivityResult: done taking new photo");
             Bitmap bitmap;
@@ -87,6 +94,7 @@ public class SelectPhotoDialog extends DialogFragment{
             getDialog().dismiss();
         }
     }
+
 
     @Override
     public void onAttach(Context context) {

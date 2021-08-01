@@ -13,6 +13,20 @@ public class Posts {
     private String cell;
     private String name;
 
+    /**
+     * Posts constructor.
+     * @param post_id
+     * @param user_id
+     * @param image
+     * @param title
+     * @param price
+     * @param description
+     * @param campus
+     * @param other
+     * @param email
+     * @param cell
+     * @param name
+     */
     public Posts(String post_id, String user_id, String image, String title, String price, String description, String campus, String other, String email, String cell, String name) {
         this.post_id = post_id;
         this.user_id = user_id;
@@ -26,6 +40,9 @@ public class Posts {
         this.name = name;
     }
 
+    /**
+     * Posts default constructor.
+     */
     public Posts(){
 
     }
@@ -123,7 +140,10 @@ public class Posts {
 
     //toString
 
-
+    /**
+     * Converts a post to a string.
+     * @return
+     */
     @Override
     public String toString() {
         return "Posts{" +

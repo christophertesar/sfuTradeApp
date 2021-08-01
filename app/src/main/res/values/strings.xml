@@ -32,4 +32,6 @@
     <string name="personal_listings">Personal Listings</string>
     <string name="delete">delete</string>
 
+    <string name="node_posts">Posts</string>
+
 </resources>

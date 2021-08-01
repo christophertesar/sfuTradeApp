@@ -40,6 +40,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -47,7 +48,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.myfirstapp.UniversalImageLoader;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -55,6 +68,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 
 public class CreatePostActivity extends AppCompatActivity implements SelectPhotoDialog.OnPhotoSelectedListener {
@@ -67,8 +83,10 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
     private Button mPost;
     private ProgressBar mProgressBar;
 
+    private byte[] mUploadBytes;
     private Bitmap mSelectedBitmap;
     private Uri mSelectedUri;
+
 
 
     @Override
@@ -124,37 +142,113 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         });
     }
 
+    /**
+     * uploads a new image based if a bitmap is the input.
+     * @param bitmap
+     */
     private void uploadNewPhoto(Bitmap bitmap){
-
+        Log.d(TAG, "uploadNewPhoto: new photo bitmap to storage");
+        BackgroundImageResize resize = new BackgroundImageResize(bitmap);
+        Uri uri = null;
+        resize.execute(uri);
     }
 
     private void uploadNewPhoto(Uri imagePath){
-
+        Log.d(TAG, "uploadNewPhoto: new photo from Uri to storage");
+        BackgroundImageResize resize = new BackgroundImageResize(null);
+        resize.execute(imagePath);
     }
 
     public class BackgroundImageResize extends AsyncTask<Uri, Integer, byte[]> {
-        Bitmap bitmap;
+        Bitmap mBitmap;
 
         public BackgroundImageResize(Bitmap bitmap){
             if(bitmap != null){
-                this.bitmap = bitmap;
+                this.mBitmap = bitmap;
             }
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            showProgressBar();
         }
 
         @Override
         protected void onPostExecute(byte[] bytes) {
             super.onPostExecute(bytes);
+            mUploadBytes = bytes;
+            hideProgressBar();
+
+            executeUploadTask();
         }
 
         @Override
-        protected byte[] doInBackground(Uri... uris) {
-            return new byte[0];
+        protected byte[] doInBackground(Uri... params) {
+            if(mBitmap == null){//no image
+                try{
+                    mBitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),params[0]); //run in background because main app will be slow.
+                }
+                catch(IOException e){
+                    Log.e(TAG, "IOException: doInBackgorund");
+                }
+            }
+            byte[] bytes = null;
+            bytes = getBytesFromBitmap(mBitmap, 100);
+            return bytes;
         }
+    }
+
+    private void executeUploadTask(){
+        final String postID = FirebaseDatabase.getInstance().getReference().push().getKey();
+
+        final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
+                    .child("posts/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() +
+                    "/" + postID + "/post_image");
+        UploadTask uploadTask = storageReference.putBytes(mUploadBytes);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(getApplicationContext(), "Upload success!", Toast.LENGTH_SHORT).show();
+
+                //download url storage
+                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                Log.d(TAG, "FIREBASE IMAGE URL:" + firebaseUri.toString());
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+                Posts post = new Posts();
+                post.setImage(firebaseUri.toString());
+                post.setEmail(mContactEmail.getText().toString());
+                post.setCampus(mCampus.getText().toString());
+                post.setTitle(mTitle.getText().toString());
+                post.setOther(mOther.getText().toString());
+                post.setDescription(mDescription.getText().toString());
+                post.setPost_id(postID);
+                post.setPrice(mPrice.getText().toString());
+                post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                reference.child(getString(R.string.node_posts))
+                        .child(postID)
+                        .setValue(post);
+                reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
+                resetFields();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Failed to upload photo.", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+            }
+        });
+    }
+
+    public static byte[] getBytesFromBitmap(Bitmap bitmap, int quality){
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream);
+            return stream.toByteArray();
     }
 
     public void openDialog(){

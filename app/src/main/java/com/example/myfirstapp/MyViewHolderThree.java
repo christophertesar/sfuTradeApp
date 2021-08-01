@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+//This is for DashboardFragment displaying the cardholder's information into the RecyclerView list
 public class MyViewHolderThree extends RecyclerView.ViewHolder {
     View v;
     TextView postTitle, price;

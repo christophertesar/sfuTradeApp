@@ -257,7 +257,6 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                         reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
                         resetFields();
 
-
                     }
                 });
 

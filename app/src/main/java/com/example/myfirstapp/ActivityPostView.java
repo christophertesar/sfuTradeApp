@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+//SearchActivity calls this when the user clicks on the certain post when using the search filter
 public class ActivityPostView extends AppCompatActivity {
     ImageView imageView;
     TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber;
@@ -41,6 +42,7 @@ public class ActivityPostView extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("title").getValue() != null) {
+                    //Getting the values through the database with the PostID
                     String post_title = snapshot.child("title").getValue().toString();
                     String post_price = snapshot.child("price").getValue().toString();
                     String post_descp = snapshot.child("description").getValue().toString();
@@ -51,6 +53,7 @@ public class ActivityPostView extends AppCompatActivity {
                     String post_phoneNumber = snapshot.child("cell").getValue().toString();
                     String post_img = snapshot.child("image").getValue().toString();
 
+                    //sets the text boxes with the appropriate values
                     postTitle.setText(post_title);
                     price.setText(post_price);
                     description.setText(post_descp);

@@ -29,9 +29,7 @@ import com.squareup.picasso.Picasso;
 
 public class DashboardFragment extends Fragment {
     String userID;
-//    ImageView imageView;
     RecyclerView recyclerView;
-    GridLayoutManager gridLayoutManager;
     FirebaseRecyclerOptions<Posts> options;
     FirebaseRecyclerAdapter<Posts, MyViewHolderThree> adapter3;
     DatabaseReference dataRef;
@@ -51,6 +49,7 @@ public class DashboardFragment extends Fragment {
         final TextView nameTextView = (TextView) v.findViewById(R.id.db_fullname);
 
 
+        //sets the user's name in the Dashboard page
         dataRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -64,26 +63,29 @@ public class DashboardFragment extends Fragment {
             }
         });
 
+        //Loads data from the firebase
         LoadData();
-
 
         return v;
     }
 
 
-
+    //Loads data from the firebase
     private void LoadData() {
         dataRef = FirebaseDatabase.getInstance().getReference("Users").child(userID).child("userPosts");
         options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(dataRef, Posts.class).build();
         adapter3 = new FirebaseRecyclerAdapter<Posts, MyViewHolderThree>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolderThree holder, int position, @NonNull Posts model) {
-
+                //get the unique Postkey in the database to reference it and get the post information details
                 String PostID = getRef(position).getKey();
+
+                //set the cardholder display values
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
+                //when user clicks on the post, it brings them to the page that they can view the full post information
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -97,7 +99,6 @@ public class DashboardFragment extends Fragment {
             @NonNull
             @Override
             public MyViewHolderThree onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
                 View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_double_post_display, parent,false);  //in their case is single_view, check this if not working
                 return new MyViewHolderThree(v);
             }

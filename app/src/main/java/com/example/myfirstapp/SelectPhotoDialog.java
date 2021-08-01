@@ -1,9 +1,6 @@
 package com.example.myfirstapp;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
-
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

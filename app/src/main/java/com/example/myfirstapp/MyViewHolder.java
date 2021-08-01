@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+//This is for SearchActivity displaying the cardholder's information into the RecyclerView list
 public class MyViewHolder extends RecyclerView.ViewHolder {
     View v;
     TextView postid, desc, price;

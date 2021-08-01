@@ -16,7 +16,7 @@ public class MyViewHolderThree extends RecyclerView.ViewHolder {
         super(itemView);
         postTitle = itemView.findViewById(R.id.post_title);
         price = itemView.findViewById(R.id.price_tag);
-        imageView = itemView.findViewById(R.id.post_image);
+        imageView = itemView.findViewById(R.id.image_view2);
         v = itemView;
     }
 }

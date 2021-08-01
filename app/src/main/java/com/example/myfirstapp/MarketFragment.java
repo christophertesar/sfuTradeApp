@@ -23,6 +23,7 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -65,7 +66,7 @@ public class MarketFragment extends Fragment {
                 String PostID = getRef(position).getKey();
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
-//                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
+                Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.v. setOnClickListener(new View.OnClickListener() {
                     @Override

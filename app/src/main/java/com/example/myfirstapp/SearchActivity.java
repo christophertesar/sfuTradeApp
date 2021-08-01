@@ -97,7 +97,6 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
 
-
         LoadData("");
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -119,12 +118,6 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
-        //next step is a btn listener where it user will open up the post into a PostViewActivity
-
-
-//        databaseReference = FirebaseDatabase.getInstance().getReference().child("Posts");
-//        recyclerView = findViewById(R.id.result_view);
-//        searchView = findViewById(R.id.search_view);
     }
 
 
@@ -135,29 +128,18 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
 
-                final String postTitle = model.getTitle();
-                final String postPrice = model.getPrice();
-                final String postDescp = model.getDescription();
-
                 holder.postid.setText(model.getTitle());
                 holder.desc.setText(model.getDescription());
                 holder.price.setText(model.getPrice());
-//                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
+                Picasso.get().load(model.getImage()).into(holder.imageView);   //get the image to the holder
 
                 holder.v. setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(SearchActivity.this, ActivityPostView.class);
-//                        intent.putExtra("PostID", getRef(position).getKey());
-                        intent.putExtra("postName",""+postTitle);
-                        intent.putExtra("postPrice",""+postPrice);
-                        intent.putExtra("postDescp",""+postDescp);
-
                         startActivity(intent);
                     }
                 });
-
-
             }
 
             @NonNull

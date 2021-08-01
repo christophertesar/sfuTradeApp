@@ -10,13 +10,12 @@ public class MyViewHolderTwo extends RecyclerView.ViewHolder{
 
     View v;
     TextView postTitle, price;
-    ImageView img;
+    ImageView imageView;
     public MyViewHolderTwo(@NonNull View itemView) {
         super(itemView);
         postTitle = itemView.findViewById(R.id.post_title);
         price = itemView.findViewById(R.id.price_tag);
-        img = itemView.findViewById(R.id.post_image);
+        imageView = itemView.findViewById(R.id.image_view2);
         v = itemView;
     }
-
 }

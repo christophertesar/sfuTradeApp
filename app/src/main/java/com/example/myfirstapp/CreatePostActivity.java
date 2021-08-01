@@ -205,8 +205,8 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         final String postID = FirebaseDatabase.getInstance().getReference().push().getKey();
 
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
-                    .child("posts/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() +
-                    "/" + postID + "/post_image");
+                    .child("posts").child(postID);
+
         UploadTask uploadTask = storageReference.putBytes(mUploadBytes);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -214,25 +214,53 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                 Toast.makeText(getApplicationContext(), "Upload success!", Toast.LENGTH_SHORT).show();
 
                 //download url storage
-                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                Log.d(TAG, "FIREBASE IMAGE URL:" + firebaseUri.toString());
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+//                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().child("posts").child(postID).getDownloadUrl();
+//                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+//                        Uri downloadUrl = uri;
+//                        Log.d("FIREBASE URLLLLLLLLLLLLL CHECK--- ", uri.toString());
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-                Posts post = new Posts();
-                post.setImage(firebaseUri.toString());
-                post.setEmail(mContactEmail.getText().toString());
-                post.setCampus(mCampus.getText().toString());
-                post.setTitle(mTitle.getText().toString());
-                post.setOther(mOther.getText().toString());
-                post.setDescription(mDescription.getText().toString());
-                post.setPost_id(postID);
-                post.setPrice(mPrice.getText().toString());
-                post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                reference.child(getString(R.string.node_posts))
-                        .child(postID)
-                        .setValue(post);
-                reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
-                resetFields();
+                        Posts post = new Posts();
+                        post.setImage(uri.toString());
+                        post.setEmail(mContactEmail.getText().toString());
+                        post.setCampus(mCampus.getText().toString());
+                        post.setTitle(mTitle.getText().toString());
+                        post.setOther(mOther.getText().toString());
+                        post.setDescription(mDescription.getText().toString());
+                        post.setPost_id(postID);
+                        post.setPrice(mPrice.getText().toString());
+                        post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        reference.child(getString(R.string.node_posts))
+                                .child(postID)
+                                .setValue(post);
+                        reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
+                        resetFields();
+
+
+                    }
+                });
+
+//                Log.d(TAG, "FIREBASE IMAGE URL:" + firebaseUri.toString());
+//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+//
+//                Posts post = new Posts();
+//                post.setImage(firebaseUri.toString());
+//                post.setEmail(mContactEmail.getText().toString());
+//                post.setCampus(mCampus.getText().toString());
+//                post.setTitle(mTitle.getText().toString());
+//                post.setOther(mOther.getText().toString());
+//                post.setDescription(mDescription.getText().toString());
+//                post.setPost_id(postID);
+//                post.setPrice(mPrice.getText().toString());
+//                post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//                reference.child(getString(R.string.node_posts))
+//                        .child(postID)
+//                        .setValue(post);
+//                reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
+//                resetFields();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

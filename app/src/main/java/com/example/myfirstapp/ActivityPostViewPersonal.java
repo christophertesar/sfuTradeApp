@@ -72,7 +72,6 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                 mOther.setText(post_other);
 //                sellerName.setText(post_seller_name);
                 Picasso.get().load(post_img).into(imageView);
-
             }
 
             @Override
@@ -87,7 +86,6 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                 DeleteCurrentPost();
             }
         });
-
 
     }
 

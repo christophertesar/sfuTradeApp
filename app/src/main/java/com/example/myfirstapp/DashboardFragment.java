@@ -82,8 +82,8 @@ public class DashboardFragment extends Fragment {
                 String PostID = getRef(position).getKey();
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
-                Log.d("check img url ", model.getImage());
-//                Picasso.get().load(model.getImage()).into(holder.imageView);   //get the image to the holder  THIS BREAKS, IMAGE NOT SHOWING
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

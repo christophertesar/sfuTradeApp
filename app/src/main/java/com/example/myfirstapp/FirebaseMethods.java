@@ -83,12 +83,16 @@ public class FirebaseMethods {
 
     //save user's registered data into the database based on their uid as the key
     private void saveUserRegisterData (final String name, final String email){
-        User person = new User(name, email);
+//        User person = new User(name, email);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference myReference = db.getReference("Users");
+
+        User person = new User();
+        person.setName(name);
+        person.setEmail(email);
 
 //        Map<String, String> userMap = new HashMap<>();
 //        userMap.put("name", name);

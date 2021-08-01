@@ -10,8 +10,10 @@ public class Posts {
     private String campus;
     private String other;
     private String email;
+    private String sellerName;
+    private String phoneNumber;
 
-    public Posts(String post_id, String user_id, String image, String title, String price, String description, String campus, String other, String email) {
+    public Posts(String post_id, String user_id, String image, String title, String price, String description, String campus, String other, String email, String phoneNumber, String sellerName) {
         this.post_id = post_id;
         this.user_id = user_id;
         this.image = image;
@@ -21,6 +23,8 @@ public class Posts {
         this.campus = campus;
         this.other = other;
         this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.sellerName = sellerName;
     }
 
     public Posts(){
@@ -63,8 +67,15 @@ public class Posts {
     public String getEmail() {
         return email;
     }
-    //Setters
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public String getSellerName() {
+        return sellerName;
+    }
 
+
+    //Setters
     public void setPost_id(String post_id) {
         this.post_id = post_id;
     }
@@ -101,6 +112,13 @@ public class Posts {
         this.email = email;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
     //toString
 
     @Override
@@ -115,6 +133,8 @@ public class Posts {
                 ", campus='" + campus + '\'' +
                 ", other='" + other + '\'' +
                 ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", sellerName='" + sellerName + '\'' +
                 '}';
     }
 }

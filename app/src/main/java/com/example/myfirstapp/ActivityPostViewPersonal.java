@@ -27,7 +27,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
     Button btnDelete;
     ImageView imageView;
     TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber;
-    DatabaseReference ref, dataRef;
+    DatabaseReference ref, dataRef, nameRef;
 //    StorageReference storageRef;  //for img
     String userID, PostID;
 
@@ -51,6 +51,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         PostID = getIntent().getExtras().get("PostID").toString();
         ref = FirebaseDatabase.getInstance().getReference("Users").child(userID).child("userPosts").child(PostID);
+        nameRef = FirebaseDatabase.getInstance().getReference("Users").child(userID).child("name");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -59,7 +60,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                     String post_title = snapshot.child("title").getValue().toString();
                     String post_price = snapshot.child("price").getValue().toString();
                     String post_descp = snapshot.child("description").getValue().toString();
-                    //                String post_seller_name = snapshot.child("name").getValue().toString();
+//                    String post_seller_name = snapshot.
                     String post_campus = snapshot.child("campus").getValue().toString();
                     String post_email = snapshot.child("email").getValue().toString();
                     String post_other = snapshot.child("other").getValue().toString();

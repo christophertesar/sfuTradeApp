@@ -44,6 +44,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.contentcapture.DataRemovalRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -57,8 +58,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -81,7 +85,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
 
     //widgets
     private ImageView mPostImage;
-    private EditText mTitle, mDescription, mPrice, mCampus, mCell, mContactEmail, mOther;
+    private EditText mTitle, mDescription, mPrice, mCampus, mCell, mContactEmail, mOther, mPhoneNumber;
     private Button mPost;
     private ProgressBar mProgressBar;
 
@@ -203,6 +207,23 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
 
     private void executeUploadTask(){
         final String postID = FirebaseDatabase.getInstance().getReference().push().getKey();
+        Posts post = new Posts();
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = snapshot.child("name").getValue().toString();
+                post.setSellerName(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                     .child("posts").child(postID);
@@ -214,13 +235,11 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                 Toast.makeText(getApplicationContext(), "Upload success!", Toast.LENGTH_SHORT).show();
 
                 //download url storage
-//                Task<Uri> firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-                        Posts post = new Posts();
                         post.setImage(uri.toString());
                         post.setEmail(mContactEmail.getText().toString());
                         post.setCampus(mCampus.getText().toString());
@@ -228,8 +247,9 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                         post.setOther(mOther.getText().toString());
                         post.setDescription(mDescription.getText().toString());
                         post.setPost_id(postID);
-                        post.setPrice(mPrice.getText().toString());
+                        post.setPrice("$"+mPrice.getText().toString());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
                         reference.child(getString(R.string.node_posts))
                                 .child(postID)
                                 .setValue(post);
@@ -240,24 +260,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                     }
                 });
 
-//                Log.d(TAG, "FIREBASE IMAGE URL:" + firebaseUri.toString());
-//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-//
-//                Posts post = new Posts();
-//                post.setImage(firebaseUri.toString());
-//                post.setEmail(mContactEmail.getText().toString());
-//                post.setCampus(mCampus.getText().toString());
-//                post.setTitle(mTitle.getText().toString());
-//                post.setOther(mOther.getText().toString());
-//                post.setDescription(mDescription.getText().toString());
-//                post.setPost_id(postID);
-//                post.setPrice(mPrice.getText().toString());
-//                post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//                reference.child(getString(R.string.node_posts))
-//                        .child(postID)
-//                        .setValue(post);
-//                reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
-//                resetFields();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

@@ -29,5 +29,7 @@
     <string name="name">Name</string>
     <string name="other">Other</string>
     <string name="title">Title</string>
+    <string name="personal_listings">Personal Listings</string>
+    <string name="delete">delete</string>
 
 </resources>

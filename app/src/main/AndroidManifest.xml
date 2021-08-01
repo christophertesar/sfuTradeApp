@@ -36,6 +36,7 @@
         </activity>
         <activity android:name=".SearchActivity" />
         <activity android:name=".ActivityPostView" />
+        <activity android:name=".ActivityPostViewPersonal" />
 
     </application>
 

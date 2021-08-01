@@ -32,10 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation"
-        app:itemIconTint="#0F67FD"
-        app:itemTextColor="#0F67FD"
+        app:itemIconTint="#5555CC"
+        app:itemTextColor="#5555CC"
 
-        android:background="#FDA50F"/>
+        android:background="#55CBDD"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"

@@ -2,9 +2,11 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +24,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class DashboardFragment extends Fragment {
     String userID;
+//    ImageView imageView;
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
     FirebaseRecyclerOptions<Posts> options;
@@ -45,6 +49,7 @@ public class DashboardFragment extends Fragment {
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final TextView nameTextView = (TextView) v.findViewById(R.id.db_fullname);
+
 
         dataRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -77,8 +82,8 @@ public class DashboardFragment extends Fragment {
                 String PostID = getRef(position).getKey();
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
-//                Picasso.get().load(model.getImageUrl()).into(holder.img);   //get the image to the holder
-
+                Log.d("check img url ", model.getImage());
+//                Picasso.get().load(model.getImage()).into(holder.imageView);   //get the image to the holder  THIS BREAKS, IMAGE NOT SHOWING
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -97,6 +102,7 @@ public class DashboardFragment extends Fragment {
                 return new MyViewHolderThree(v);
             }
         };
+
         adapter3.startListening();
         recyclerView.setAdapter(adapter3);
     }

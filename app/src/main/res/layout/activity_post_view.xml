@@ -51,7 +51,24 @@
         android:textColor="#000"
     tools:ignore="RtlCompat,RtlSymmetry" />
 
-    <TextView
+        <TextView
+            android:id="@+id/post_view_campus"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:elevation="15dp"
+            android:layout_below="@id/post_view_price"
+            android:background="#FFF"
+            android:hint="@string/preferred_campus"
+            android:textAlignment="textEnd"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#000"
+            tools:ignore="RtlCompat" />
+
+
+        <TextView
         android:id="@+id/post_view_descriptiontxt"
         android:layout_below="@id/post_view_price"
         android:layout_marginTop="15dp"
@@ -125,6 +142,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColor="#000" />
+
         <TextView
             android:id="@+id/post_view_email"
             android:layout_width="match_parent"
@@ -167,7 +185,6 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textColor="#000" />
-        />
     <!--    </RelativeLayout>-->
     </LinearLayout>
     </ScrollView>

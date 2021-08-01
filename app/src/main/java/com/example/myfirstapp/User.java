@@ -1,18 +1,11 @@
 package com.example.myfirstapp;
 
 public class User {
-
-
     public String email;
     public String name;
 
-    public User() {}
-//    public User(String email) {
-//        this.email = email;
-//    }
-
     //empty Constructor
-//    public User() {}
+    public User() {}
 
     public User(String name, String email){
         this.name = name;

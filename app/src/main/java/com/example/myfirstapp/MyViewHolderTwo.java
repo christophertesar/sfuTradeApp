@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+//This is for MarketFragment displaying the cardholder's information into the RecyclerView list
 public class MyViewHolderTwo extends RecyclerView.ViewHolder{
 
     View v;

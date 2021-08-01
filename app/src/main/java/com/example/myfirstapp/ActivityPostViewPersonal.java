@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+//the postview is specifically for viewing user's personal posts, has the additional function of Delete button that will delete the posts from the database
 public class ActivityPostViewPersonal extends AppCompatActivity {
     Button btnDelete;
     ImageView imageView;
@@ -56,6 +57,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("title").getValue() != null) {
+                    //Getting the values through the database with the PostID
                     String post_title = snapshot.child("title").getValue().toString();
                     String post_price = snapshot.child("price").getValue().toString();
                     String post_descp = snapshot.child("description").getValue().toString();
@@ -66,6 +68,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                     String post_seller_name = snapshot.child("name").getValue().toString();
                     String post_img = snapshot.child("image").getValue().toString();
 
+                    //sets the text boxes with the appropriate values
                     postTitle.setText(post_title);
                     price.setText(post_price);
                     description.setText(post_descp);
@@ -97,6 +100,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
 
     }
 
+    //deletes the post in the "Posts" and the "Users" personal "userPosts" path
     private void DeleteCurrentPost() {
         dataRef = FirebaseDatabase.getInstance().getReference("Posts").child(PostID);
         dataRef.removeValue();

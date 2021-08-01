@@ -64,6 +64,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colourBlue" />
+        android:background="@color/colorPrimary" />
 
 </androidx.cardview.widget.CardView>

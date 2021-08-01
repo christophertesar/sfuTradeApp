@@ -39,6 +39,8 @@ public class MarketFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_market, container, false);
+
+        //clicking on the "Search marketplace" button will bring them the activity that has the search filter function.
         Button btn_search = v.findViewById(R.id.btn_search1);
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,12 +64,15 @@ public class MarketFragment extends Fragment {
         adapter2 = new FirebaseRecyclerAdapter<Posts, MyViewHolderTwo>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolderTwo holder, int position, @NonNull Posts model) {
-
+                //get the unique Postkey in the database to reference it and get the post information details
                 String PostID = getRef(position).getKey();
+
+                //set the cardholder display values
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
+                //when user clicks on the post, it brings them to the page that they can view the full post information
                 holder.v. setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

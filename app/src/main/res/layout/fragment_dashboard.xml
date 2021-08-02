@@ -38,14 +38,26 @@
         android:layout_marginTop="10dp" >
         <TextView
             android:id="@+id/txt_personal_listings"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
             android:text="@string/personal_listings"
             android:textSize="25sp"
             android:textColor="#000"
             android:textStyle="bold"
-            android:gravity="bottom" />
+            android:gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:text="@string/sorted_by_most_recent"
+            android:gravity="bottom"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/db_result_list"

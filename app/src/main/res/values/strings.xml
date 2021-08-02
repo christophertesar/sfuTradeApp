@@ -40,5 +40,8 @@
 
     <string name="node_posts">Posts</string>
     <string name="post_date">Post date</string>
+    <string name="recent_posts">Recent Posts</string>
+    <string name="search">Search...</string>
+    <string name="sorted_by_most_recent">Sorted by: Most Recent</string>
 
 </resources>

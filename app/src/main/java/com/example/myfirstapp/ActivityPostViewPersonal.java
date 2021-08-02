@@ -115,6 +115,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
             public void onSuccess(Void unused) {
                 Toast.makeText(ActivityPostViewPersonal.this, "You have successfully deleted the post!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ActivityPostViewPersonal.this, MainApp.class);
+                finish();
                 startActivity(intent);
             }
         });

@@ -13,14 +13,14 @@ public class Posts {
     private String cell;
     private String name;
 
-    private String timeMili;
+    private long timeMili;
     private String date;
 
-    public String getTimeMili() {
+    public long getTimeMili() {
         return timeMili;
     }
 
-    public void setTimeMili(String timeMili) {
+    public void setTimeMili(long timeMili) {
         this.timeMili = timeMili;
     }
 

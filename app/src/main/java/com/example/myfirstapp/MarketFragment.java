@@ -58,9 +58,8 @@ public class MarketFragment extends Fragment {
     }
 
     private void LoadData() {
-//        Query query = dataRef.orderByChild("title").startAt(data).endAt(data+"\uf8ff");
-
-        options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(dataRef, Posts.class).build();
+        Query query = dataRef.orderByChild("timeMili");
+        options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(query, Posts.class).build();
         adapter2 = new FirebaseRecyclerAdapter<Posts, MyViewHolderTwo>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolderTwo holder, int position, @NonNull Posts model) {

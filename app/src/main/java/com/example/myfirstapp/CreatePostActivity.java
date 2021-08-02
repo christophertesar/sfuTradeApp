@@ -306,8 +306,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                         String date = getDate();
                         post.setDate(date);
                         long miliTime = getTimeMiliseconds();
-                        String s_miliTime = String.valueOf(miliTime);
-                        post.setTimeMili(s_miliTime);
+                        post.setTimeMili(miliTime);
 
                         reference.child(getString(R.string.node_posts))
                                 .child(postID)

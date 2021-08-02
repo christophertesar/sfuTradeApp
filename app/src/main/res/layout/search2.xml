@@ -11,13 +11,13 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:hint="Search..."
+        android:hint="@string/search"
         android:padding="10dp"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:background="@drawable/bg_searchview"
         android:drawableRight="@drawable/ic_search"
-        android:backgroundTint="@color/colorAccent2"/>
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_view"

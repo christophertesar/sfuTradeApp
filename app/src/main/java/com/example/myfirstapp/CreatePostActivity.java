@@ -136,7 +136,6 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         SimpleDateFormat currentDate = new SimpleDateFormat( "MMM dd, yyyy");
         String formattedcurrentDate = currentDate.format(new Date());
         return formattedcurrentDate;
-//        Log.d("Today's date", formattedcurrentDate);
     }
 
     //get the current Time coverted into miliseconds, and returns the negative value of the miliseconds value
@@ -145,7 +144,6 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
         LocalDateTime localDate = LocalDateTime.parse(currentTime.toString(), formatter);
         long timeInMilliseconds = -localDate.atOffset(ZoneOffset.UTC).toInstant().toEpochMilli();
-//        timeInMilliseconds = -timeInMilliseconds;
         Log.d(TAG, "Date in milli :: FOR API >= 26 >>> " + timeInMilliseconds);
         return timeInMilliseconds;
     }

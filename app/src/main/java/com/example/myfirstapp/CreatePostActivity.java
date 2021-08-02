@@ -73,6 +73,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -114,6 +115,7 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         mPost = findViewById(R.id.btn_post);
         mProgressBar = findViewById(R.id.progressBar);
 
+        toolbarSetup();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         init();
         verifyPermissions();
@@ -387,6 +389,17 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         mSelectedUri = null;
         mSelectedBitmap = bitmap;
     }
+
+    //set up the toolbar
+    private void toolbarSetup(){
+        //set up the Account's toolbar
+        Toolbar toolbar = findViewById(R.id.fp_toolbar);
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("Create Post");
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
 
 }
 

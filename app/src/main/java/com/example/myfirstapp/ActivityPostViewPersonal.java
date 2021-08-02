@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +36,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_view_personal);
+        toolbarSetup();
 
         postTitle = findViewById(R.id.post_view_personal_post_title);
         price = findViewById(R.id.post_view_personal_price);
@@ -114,4 +116,13 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
             }
         });
     }
+
+    //set up the toolbar
+    private void toolbarSetup(){
+        //set up the Account's toolbar
+        Toolbar toolbar = findViewById(R.id.post_view_personal_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
 }

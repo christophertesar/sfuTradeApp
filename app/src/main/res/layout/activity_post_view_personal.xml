@@ -3,10 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     tools:context="com.example.myfirstapp.ActivityPostViewPersonal">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/post_view_personal_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:elevation="10dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Your Post"/>
+
     <ScrollView
+        android:layout_below="@id/post_view_personal_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
@@ -93,13 +106,6 @@
                 android:hint="@string/description"
                 android:padding="10dp"
                 android:textSize="25sp"/>
-
-            <!--    <RelativeLayout-->
-            <!--        android:layout_below="@id/post_view_description"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:layout_marginTop="10dp"-->
-            <!--        android:background="#FFF" >-->
 
             <TextView
                 android:id="@+id/post_view_personal_contacttxt"

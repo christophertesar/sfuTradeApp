@@ -29,14 +29,17 @@
         </activity>
         <activity android:name=".MainApp" />
         <activity android:name=".RegisterActivity"/>
-        <activity android:name=".CreatePostActivity" />
+        <activity android:name=".CreatePostActivity"
+            android:parentActivityName=".MainApp"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".AccountActivity"
             android:parentActivityName=".MainApp">
         </activity>
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchActivity"
+            android:parentActivityName=".MainApp"/>
         <activity android:name=".ActivityPostView" />
-        <activity android:name=".ActivityPostViewPersonal" />
+        <activity android:name=".ActivityPostViewPersonal"
+            android:parentActivityName=".MainApp"/>
 
     </application>
 

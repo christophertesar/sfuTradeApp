@@ -11,16 +11,18 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:gravity="center"
+        android:elevation="10dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    <TextView
 
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Post"
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:textColor="#FFF"
+        android:elevation="10dp"
         android:textSize="23sp"
         android:fontFamily="sans-serif-condensed-light"
         android:textStyle="bold"/>

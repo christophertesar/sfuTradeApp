@@ -79,6 +79,16 @@ import androidx.core.content.ContextCompat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class CreatePostActivity extends AppCompatActivity implements SelectPhotoDialog.OnPhotoSelectedListener {
@@ -120,6 +130,26 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         init();
         verifyPermissions();
     }
+
+    //get the current Date
+    private String getDate() {
+        SimpleDateFormat currentDate = new SimpleDateFormat( "MMM dd, yyyy");
+        String formattedcurrentDate = currentDate.format(new Date());
+        return formattedcurrentDate;
+//        Log.d("Today's date", formattedcurrentDate);
+    }
+
+    //get the current Time coverted into miliseconds, and returns the negative value of the miliseconds value
+    private long getTimeMiliseconds() {   //remeber when adding to post add a "-" + time;
+        Date currentTime = Calendar.getInstance().getTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        LocalDateTime localDate = LocalDateTime.parse(currentTime.toString(), formatter);
+        long timeInMilliseconds = -localDate.atOffset(ZoneOffset.UTC).toInstant().toEpochMilli();
+//        timeInMilliseconds = -timeInMilliseconds;
+        Log.d(TAG, "Date in milli :: FOR API >= 26 >>> " + timeInMilliseconds);
+        return timeInMilliseconds;
+    }
+
     private void init(){
 
         mPostImage.setOnClickListener(new View.OnClickListener() {
@@ -273,6 +303,11 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                         post.setPost_id(postID);
                         post.setPrice("$"+mPrice.getText().toString());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        String date = getDate();
+                        post.setDate(date);
+                        long miliTime = getTimeMiliseconds();
+                        String s_miliTime = String.valueOf(miliTime);
+                        post.setTimeMili(s_miliTime);
 
                         reference.child(getString(R.string.node_posts))
                                 .child(postID)

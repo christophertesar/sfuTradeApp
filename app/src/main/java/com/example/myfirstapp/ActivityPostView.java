@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 //SearchActivity calls this when the user clicks on the certain post when using the search filter
 public class ActivityPostView extends AppCompatActivity {
     ImageView imageView;
-    TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber;
+    TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber, date;
     DatabaseReference ref;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,8 +33,9 @@ public class ActivityPostView extends AppCompatActivity {
         campus = findViewById(R.id.post_view_campus);
         mOther = findViewById(R.id.post_view_other);
         email = findViewById(R.id.post_view_email);
-        imageView = findViewById(R.id.post_view_img);
         phoneNumber = findViewById(R.id.post_view_phone_number);
+        date = findViewById(R.id.post_view_date);
+        imageView = findViewById(R.id.post_view_img);
 
         String PostID = getIntent().getExtras().get("PostID").toString();
         ref = FirebaseDatabase.getInstance().getReference().child("Posts").child(PostID);
@@ -52,6 +53,7 @@ public class ActivityPostView extends AppCompatActivity {
                     String post_email = snapshot.child("email").getValue().toString();
                     String post_other = snapshot.child("other").getValue().toString();
                     String post_phoneNumber = snapshot.child("cell").getValue().toString();
+                    String post_date = snapshot.child("date").getValue().toString();
                     String post_img = snapshot.child("image").getValue().toString();
 
                     //sets the text boxes with the appropriate values
@@ -63,6 +65,7 @@ public class ActivityPostView extends AppCompatActivity {
                     mOther.setText(post_other);
                     sellerName.setText(post_seller_name);
                     phoneNumber.setText(post_phoneNumber);
+                    date.setText(post_date);
                     Picasso.get().load(post_img).into(imageView);
                 }
             }

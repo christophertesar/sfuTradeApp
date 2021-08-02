@@ -39,5 +39,6 @@
     <string name="other_informations">Other Informations</string>
 
     <string name="node_posts">Posts</string>
+    <string name="post_date">Post date</string>
 
 </resources>

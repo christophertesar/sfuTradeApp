@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
+import java.util.Date;
+
 
 public class SearchActivity extends AppCompatActivity {
     EditText inputSearch;
@@ -73,11 +75,11 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
-
                 String PostID = getRef(position).getKey();
                 holder.postid.setText(model.getTitle());
                 holder.desc.setText(model.getDescription());
                 holder.price.setText(model.getPrice());
+                holder.time.setText(model.getDate());
                 Picasso.get().load(model.getImage()).into(holder.imageView);   //get the image to the holder
 
                 holder.v. setOnClickListener(new View.OnClickListener() {

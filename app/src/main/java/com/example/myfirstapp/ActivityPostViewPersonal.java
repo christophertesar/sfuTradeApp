@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -28,7 +29,7 @@ import com.squareup.picasso.Picasso;
 public class ActivityPostViewPersonal extends AppCompatActivity {
     Button btnDelete;
     ImageView imageView;
-    TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber;
+    TextView postTitle, price, description, sellerName, campus, mOther, email, phoneNumber, date;
     DatabaseReference ref, dataRef, nameRef;
     String userID, PostID;
 
@@ -46,6 +47,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
         mOther = findViewById(R.id.post_view_personal_other);
         email = findViewById(R.id.post_view_personal_email);
         phoneNumber = findViewById(R.id.post_view_personal_phone_number);
+        date = findViewById(R.id.post_view_personal_date);
         imageView = findViewById(R.id.post_view_personal_img);
 
         btnDelete = findViewById(R.id.post_view_personal_delete_btn);
@@ -68,6 +70,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                     String post_other = snapshot.child("other").getValue().toString();
                     String post_phoneNumber = snapshot.child("cell").getValue().toString();
                     String post_seller_name = snapshot.child("name").getValue().toString();
+                    String post_date = snapshot.child("date").getValue().toString();
                     String post_img = snapshot.child("image").getValue().toString();
 
                     //sets the text boxes with the appropriate values
@@ -79,7 +82,7 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
                     mOther.setText(post_other);
                     sellerName.setText(post_seller_name);
                     phoneNumber.setText(post_phoneNumber);
-
+                    date.setText(post_date);
                     Picasso.get().load(post_img).into(imageView);
                 }
                 else{

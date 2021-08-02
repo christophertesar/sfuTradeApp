@@ -23,8 +23,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class DashboardFragment extends Fragment {
@@ -72,17 +80,20 @@ public class DashboardFragment extends Fragment {
 
     //Loads data from the firebase
     private void LoadData() {
+
         dataRef = FirebaseDatabase.getInstance().getReference("Users").child(userID).child("userPosts");
-        options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(dataRef, Posts.class).build();
+        //sort post by most recent posting
+        Query query = dataRef.orderByChild("timeMili");
+        options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(query, Posts.class).build();
         adapter3 = new FirebaseRecyclerAdapter<Posts, MyViewHolderThree>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolderThree holder, int position, @NonNull Posts model) {
                 //get the unique Postkey in the database to reference it and get the post information details
                 String PostID = getRef(position).getKey();
-
                 //set the cardholder display values
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
+                holder.time.setText(model.getDate());    //set time
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 //when user clicks on the post, it brings them to the page that they can view the full post information

@@ -70,6 +70,7 @@ public class MarketFragment extends Fragment {
                 //set the cardholder display values
                 holder.postTitle.setText(model.getTitle());
                 holder.price.setText(model.getPrice());
+                holder.time.setText(model.getDate());    //set time
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 //when user clicks on the post, it brings them to the page that they can view the full post information

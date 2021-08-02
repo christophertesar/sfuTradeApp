@@ -13,6 +13,27 @@ public class Posts {
     private String cell;
     private String name;
 
+    private String timeMili;
+    private String date;
+
+    public String getTimeMili() {
+        return timeMili;
+    }
+
+    public void setTimeMili(String timeMili) {
+        this.timeMili = timeMili;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
+
     /**
      * Posts constructor.
      * @param post_id

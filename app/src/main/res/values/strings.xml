@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My First App</string>
+    <string name="app_name">SFU Trade Hub</string>
     <string name="signout">Sign Out</string>
     <string name="signin">Sign In</string>
     <string name="profile" >Profile</string>

@@ -18,10 +18,18 @@ public class UniversalImageLoader {
     private static final int defaultImage = R.drawable.ic_launcher_foreground;
     private Context mContext;
 
+    /**
+     * Set the context.
+     * @param context
+     */
     public UniversalImageLoader(Context context) {
         mContext = context;
     }
 
+    /**
+     * Set up the image loader.
+     * @return configuration
+     */
     public ImageLoaderConfiguration getConfig(){
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .showImageOnLoading(defaultImage)
@@ -42,9 +50,7 @@ public class UniversalImageLoader {
     }
 
     /**
-     * this method can be sued to set images that are static. It can't be used if the images
-     * are being changed in the Fragment/Activity - OR if they are being set in a list or
-     * a grid
+     * Loads image loader based on instance. The photo is displayed using the image URL.
      * @param imgURL
      * @param image
      */

@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                                             if(user.isEmailVerified()){
                                                 finish();
                                                 Intent intent = new Intent(MainActivity.this, MainApp.class);
+                                                toastMessage("Login Success!");
                                                 startActivity(intent);
                                             }
                                             else{

@@ -61,7 +61,9 @@ public class FirebaseMethods {
     }
 
 
-    //This function sends a verification email to the newly created account to verify.
+    /**
+     * Sends a verification email to the newly created account to verify.
+     */
     public void sendVerificationEmail(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -81,7 +83,11 @@ public class FirebaseMethods {
         }
     }
 
-    //save user's registered data into the database based on their uid as the key
+    /**
+     * save user's registered data into the database based on their Uid as the key
+     * @param name
+     * @param email
+     */
     private void saveUserRegisterData (final String name, final String email){
 //        User person = new User(name, email);
 

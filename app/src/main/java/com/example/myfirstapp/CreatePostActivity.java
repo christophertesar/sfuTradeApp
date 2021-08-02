@@ -145,6 +145,9 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                         uploadNewPhoto(mSelectedUri);
                    }
                }
+               else{
+                   Toast.makeText(getApplicationContext(),"Missing Fields.",Toast.LENGTH_SHORT).show();
+               }
            }
         });
     }
@@ -160,6 +163,10 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         resize.execute(uri);
     }
 
+    /**
+     * uploads a new image if a image path is the input.
+     * @param imagePath
+     */
     private void uploadNewPhoto(Uri imagePath){
         Log.d(TAG, "uploadNewPhoto: new photo from Uri to storage");
         BackgroundImageResize resize = new BackgroundImageResize(null);
@@ -169,18 +176,29 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
     public class BackgroundImageResize extends AsyncTask<Uri, Integer, byte[]> {
         Bitmap mBitmap;
 
+        /**
+         * Setting the bitmap to resize.
+         * @param bitmap
+         */
         public BackgroundImageResize(Bitmap bitmap){
             if(bitmap != null){
                 this.mBitmap = bitmap;
             }
         }
 
+        /**
+         * Before executing, the progress bar is shown.
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             showProgressBar();
         }
 
+        /**
+         * Upload image and form information to Firebase.
+         * @param bytes
+         */
         @Override
         protected void onPostExecute(byte[] bytes) {
             super.onPostExecute(bytes);
@@ -206,6 +224,9 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         }
     }
 
+    /**
+     * Compiles data to create a form using the form and photo.
+     */
     private void executeUploadTask(){
         final String postID = FirebaseDatabase.getInstance().getReference().push().getKey();
         Posts post = new Posts();
@@ -256,7 +277,9 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
                                 .setValue(post);
                         reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPosts").child(postID).setValue(post);
                         resetFields();
-
+                        finish(); //Finish Current Activity
+                        Intent intent = new Intent(CreatePostActivity.this, MainApp.class);
+                        startActivity(intent);
                     }
                 });
 
@@ -275,6 +298,12 @@ public class CreatePostActivity extends AppCompatActivity implements SelectPhoto
         });
     }
 
+    /**
+     *
+     * @param bitmap
+     * @param quality
+     * @return
+     */
     public static byte[] getBytesFromBitmap(Bitmap bitmap, int quality){
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream);

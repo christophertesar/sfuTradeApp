@@ -105,12 +105,13 @@
                 android:id="@+id/post_view_personal_contacttxt"
                 android:layout_below="@id/post_view_personal_description"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:background="@color/colorAccent2"
                 android:text="Sale Post by"
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:textStyle="bold"
+                android:gravity="center_vertical"
                 android:layout_marginTop="15dp"
                 android:paddingLeft="10dp"/>
 
@@ -160,11 +161,12 @@
                 android:id="@+id/post_view_other_txt"
                 android:layout_below="@id/post_view_email"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:background="@color/colorAccent2"
                 android:text="@string/other_informations"
                 android:textSize="20sp"
                 android:textColor="#000"
+                android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:layout_marginTop="15dp"
                 android:paddingLeft="10dp"/>
@@ -193,8 +195,8 @@
                 android:background="@drawable/bg_delete_btn"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="55dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/delete" />
         </LinearLayout>
     </ScrollView>

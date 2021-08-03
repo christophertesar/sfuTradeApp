@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">My First App</string>
+    <string name="app_name">SFU Trade Hub</string>
+    <string name="signout">Sign Out</string>
+    <string name="signin">Sign In</string>
+    <string name="profile" >Profile</string>
     <string name="want_to_buy">Want to buy</string>
     <string name="for_sale">For Sale</string>
     <string name="search_bar">Search Marketplace</string>
@@ -8,4 +11,37 @@
     <string name="dashboard">Dashboard</string>
     <string name="post">Post</string>
     <string name="market">Marketplace</string>
+
+    <string name="post_option">Pick Your Type of Posting</string>
+    <string name="want_to_sell">Want to Sell</string>
+    <string name="account">Account</string>
+    <string name="password_warning">Password must include letters and numbers.</string>
+    <string name="email_address">Email Address</string>
+    <string name="register_new_account">Register New Account</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="register">Register</string>
+
+    <string name="dialog_select_photo">SelectPhoto</string>
+    <string name="post_title">POST TITLE</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="name">Name</string>
+    <string name="other">Other</string>
+    <string name="title">Title</string>
+    <string name="personal_listings">Personal Listings</string>
+    <string name="delete">delete</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="preferred_campus">Preferred Campus</string>
+    <string name="insert_photo_here">Insert photo here</string>
+    <string name="other_optional">Other (Optional)</string>
+    <string name="other_informations">Other Informations</string>
+
+    <string name="node_posts">Posts</string>
+    <string name="post_date">Post date</string>
+    <string name="recent_posts">Recent Posts</string>
+    <string name="search">Search...</string>
+    <string name="sorted_by_most_recent">Sorted by: Most Recent</string>
+
 </resources>

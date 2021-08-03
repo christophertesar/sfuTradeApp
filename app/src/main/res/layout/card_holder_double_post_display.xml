@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardElevation="7dp"
+         app:cardCornerRadius="5dp"
+        android:outlineAmbientShadowColor="@color/colourBlue">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/image_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:src="@drawable/ic_person"/>
+
+                <TextView
+                    android:id="@+id/post_title"
+                    android:layout_below="@id/image_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:paddingLeft="7dp"
+                    android:hint="@string/post_title"
+                    android:gravity="center_vertical"
+                    android:textSize="17sp"
+                    android:textColor="#000"
+                    android:textAllCaps="true"
+                    android:maxLines="1"/>
+
+                <TextView
+                    android:id="@+id/price_tag"
+                    android:layout_below="@id/post_title"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:paddingRight="2dp"
+                    android:hint="$price"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#000000"/>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/date_time"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_below="@id/price_tag"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:hint="Timezone"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="#000000"/>-->
+
+                <TextView
+                    android:id="@+id/date_time"
+                    android:layout_below="@id/price_tag"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_alignParentEnd="true"
+                    android:paddingRight="2dp"
+                    android:hint="Timezone"
+                    android:gravity="center_vertical"
+                    android:textAlignment="textEnd"
+                    android:textSize="13sp"
+                    tools:ignore="RtlCompat" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>

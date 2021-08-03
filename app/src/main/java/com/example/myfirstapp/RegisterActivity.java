@@ -72,6 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         else if(!domain.equals(SFU_DOMAIN)){
             toastMessage("Must be a valid @sfu.ca email.");
+            return false;
         }
         return true;
     }

@@ -3,7 +3,15 @@
     package="com.example.myfirstapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +29,18 @@
         </activity>
         <activity android:name=".MainApp" />
         <activity android:name=".RegisterActivity"/>
+        <activity android:name=".CreatePostActivity"
+            android:parentActivityName=".MainApp"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".AccountActivity"
+            android:parentActivityName=".MainApp">
+        </activity>
+        <activity android:name=".SearchActivity"
+            android:parentActivityName=".MainApp"/>
+        <activity android:name=".ActivityPostView" />
+        <activity android:name=".ActivityPostViewPersonal"
+            android:parentActivityName=".MainApp"/>
+
     </application>
 
 </manifest>

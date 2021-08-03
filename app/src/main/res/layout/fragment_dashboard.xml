@@ -2,13 +2,73 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#89cfef">
+
+    <ImageView
+        android:id="@+id/db_profile_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_account_circle_white"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dashboard"
-        android:textSize="30sp"
-        android:layout_centerInParent="true" />
+        android:id="@+id/db_fullname"
+        android:layout_below="@id/db_profile_pic"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+
+        android:layout_centerHorizontal="true"
+        android:hint="@string/full_name"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="#000"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_below="@id/db_fullname"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:elevation="30dp"
+        android:layout_marginTop="10dp" >
+        <TextView
+            android:id="@+id/txt_personal_listings"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:text="@string/personal_listings"
+            android:textSize="25sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="bottom"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:text="@string/sorted_by_most_recent"
+            android:gravity="bottom"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/db_result_list"
+            android:layout_below="@id/txt_personal_listings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:padding="2dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

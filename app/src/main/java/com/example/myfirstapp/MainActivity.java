@@ -11,8 +11,12 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -27,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
     //UI
     private EditText mEmail, mPassword;
-    private Button btnSignIn, btnSignOut;
+    private Button btnSignIn, btnRegister;
+    private ProgressBar mProgressBar;
 
     /**
      * Setup of Firebase authenticator
      */
+
     private void setupFirebaseAuth(){
         mAuth = FirebaseAuth.getInstance();
 
@@ -40,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null) {
-                    toastMessage("Successfully signed in with:" + user.getEmail());
+                    //toastMessage("Successfully signed in with:" + user.getEmail());
 
 //                    //User directed to the main app screen after signing in
 //                    Button button = (Button) findViewById(R.id.button);
@@ -53,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 //                    });
                 }
                 else {
-                    toastMessage("Successfully signed out.");
+                    //toastMessage("Successfully signed out.");
                 }
             }
         };
@@ -75,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creates a toast message from a string.
+     * @param message
+     */
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
@@ -90,7 +100,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      --------------------------------------------------------------------------------------------
      **/
-
+    /**
+     * Main login screen on startup.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,16 +112,52 @@ public class MainActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         mPassword = (EditText) findViewById(R.id.editTextTextPassword);
         btnSignIn = (Button) findViewById(R.id.button);
-        btnSignOut = (Button) findViewById(R.id.button2);
+        btnRegister = (Button) findViewById(R.id.button2);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.INVISIBLE);
 
         setupFirebaseAuth();
+        mAuth.signOut();
+
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
                 String email = mEmail.getText().toString();
                 String pass = mPassword.getText().toString();
                 if(!email.equals("") && !pass.equals("")){
-                    mAuth.signInWithEmailAndPassword(email,pass);
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    mAuth.signInWithEmailAndPassword(email,pass)
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+
+                                    if(!task.isSuccessful()){
+                                        toastMessage("Invalid credentials.");
+                                        mProgressBar.setVisibility(View.GONE);
+                                    }
+                                    else{
+                                        try{
+                                            if(user.isEmailVerified()){
+                                                finish();
+                                                Intent intent = new Intent(MainActivity.this, MainApp.class);
+                                                toastMessage("Login Success!");
+                                                startActivity(intent);
+                                            }
+                                            else{
+                                                toastMessage("Please verify your email.");
+                                                mProgressBar.setVisibility(View.GONE);
+                                                mAuth.signOut();
+                                            }
+                                        }
+                                        catch(NullPointerException e){
+
+                                        }
+                                    }
+                                }
+                            });
+
 
                 }
                 else{
@@ -118,20 +167,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSignOut.setOnClickListener(new View.OnClickListener(){
+        //Lead to Register screen when 'Register' button is clicked
+        btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                mAuth.signOut();
-                toastMessage("Signing out.");
-            }
-        });
-
-        //User directed to the main app screen after signing in
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainApp.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });

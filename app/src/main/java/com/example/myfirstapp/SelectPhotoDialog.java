@@ -15,6 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/*
+     * This file is downloaded from the following location:
+     *     https://github.com/mitchtabian/ForSale/blob/bf047ab98c75b36baedc950f56c104aa0aaa95b1/app/src/main/java/codingwithmitch/com/forsale/SelectPhotoDialog.java
+     * The source code has not been modified.
+     * The file has the following copyright from the original author:
+     *     N/A
+     */
+
+
 public class SelectPhotoDialog extends DialogFragment{
 
     private static final String TAG = "SelectPhotoDialog";

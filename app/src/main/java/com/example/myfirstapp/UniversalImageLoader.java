@@ -11,7 +11,13 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 
-
+/*
+     * This file is downloaded from the following location:
+     *     https://github.com/mitchtabian/ForSale/blob/bf047ab98c75b36baedc950f56c104aa0aaa95b1/app/src/main/java/codingwithmitch/com/forsale/util/UniversalImageLoader.java
+     * The source code has not been modified.
+     * The file has the following copyright from the original author:
+     *     N/A
+     */
 
 public class UniversalImageLoader {
 

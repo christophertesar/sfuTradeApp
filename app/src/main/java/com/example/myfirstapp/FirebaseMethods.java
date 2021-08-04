@@ -16,6 +16,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+ /*
+     * This class definition (or function) is derived
+     * from the code available at the following location:
+     *     https://github.com/mitchtabian/Android-Instagram-Clone/blob/5054ca6e84a7c101c0088dceaef0c4df1a34bc7e/app/src/main/java/tabian/com/instagramclone/Utils/FirebaseMethods.java
+     * The file has the following copyright from the original author:
+     *     N/A
+     */
+
 public class FirebaseMethods {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;

@@ -20,6 +20,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/*
+     * This class definition (or function) is derived
+     * from the code available at the following location:
+     *     https://github.com/mitchtabian/ForSale/blob/bf047ab98c75b36baedc950f56c104aa0aaa95b1/app/src/main/java/codingwithmitch/com/forsale/account/LoginActivity.java
+     * The file has the following copyright from the original author:
+     *     N/A
+     */
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,5 +1,13 @@
 package com.example.myfirstapp;
 
+/*
+     * This class definition (or function) is derived
+     * from the code available at the following location:
+     *     https://github.com/mitchtabian/ForSale/blob/85628ecb4a1d50eab06d1152ed94f74b269403b1/app/src/main/java/codingwithmitch/com/forsale/models/Post.java
+     * The file has the following copyright from the original author:
+     *     N/A
+     */
+
 public class Posts {
     private String post_id;
     private String user_id;

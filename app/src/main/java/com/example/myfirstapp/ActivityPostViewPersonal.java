@@ -25,6 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+/*
+    * This class definition (or function) is derived
+    * from the code available at the following location:
+    *     https://www.youtube.com/watch?v=2EhlB4jqb48&list=PLYx38U7gxBf32GGSGK-D6RDXEpmtgP5Al&index=5
+    * The file has the following copyright from the original author:
+    *     Technical Skillz
+    */
 //the postview is specifically for viewing user's personal posts, has the additional function of Delete button that will delete the posts from the database
 public class ActivityPostViewPersonal extends AppCompatActivity {
     Button btnDelete;
@@ -105,6 +112,13 @@ public class ActivityPostViewPersonal extends AppCompatActivity {
 
     }
 
+    /*
+     * This class definition (or function) is derived
+     * from the code available at the following location:
+     *     https://www.youtube.com/watch?v=GlTxSwvSiQY&list=PLYx38U7gxBf32GGSGK-D6RDXEpmtgP5Al&index=8
+     * The file has the following copyright from the original author:
+     *     Technical Skillz
+     */
     //deletes the post in the "Posts" and the "Users" personal "userPosts" path
     private void DeleteCurrentPost() {
         dataRef = FirebaseDatabase.getInstance().getReference("Posts").child(PostID);

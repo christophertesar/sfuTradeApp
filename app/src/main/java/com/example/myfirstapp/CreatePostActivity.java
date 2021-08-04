@@ -29,6 +29,14 @@
 //}
 //
 
+/*
+     * This class definition is derived
+     * from the code available at the following location:
+     *     https://github.com/mitchtabian/ForSale/blob/master/app/src/main/java/codingwithmitch/com/forsale/PostFragment.java
+     * The file has the following copyright from the original author:
+     *     N/A
+     */
+
 package com.example.myfirstapp;
 
 import android.Manifest;

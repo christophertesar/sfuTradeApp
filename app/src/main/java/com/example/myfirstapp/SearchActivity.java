@@ -23,6 +23,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 
+    /*
+     * This class definition (or function) is derived
+     * from the code available at the following location:
+     *     https://www.youtube.com/watch?v=_nIoEAC3kLg&list=PLYx38U7gxBf32GGSGK-D6RDXEpmtgP5Al&index=7
+     * The file has the following copyright from the original author:
+     *     Technical Skillz
+     */
 
 public class SearchActivity extends AppCompatActivity {
     EditText inputSearch;

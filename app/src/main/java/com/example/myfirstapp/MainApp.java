@@ -19,6 +19,14 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
+/*
+    * This class definition (or function) is derived
+    * from the code available at the following location:
+    *     https://www.youtube.com/watch?v=tPV8xA7m-iw
+    * The file has the following copyright from the original author:
+    *     Coding in Flow
+    */
 //Main app screen activities
 public class MainApp extends AppCompatActivity {
     public Button btn;

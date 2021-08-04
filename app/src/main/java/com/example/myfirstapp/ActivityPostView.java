@@ -16,6 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+/*
+    * This class definition (or function) is derived
+    * from the code available at the following location:
+    *     https://www.youtube.com/watch?v=2EhlB4jqb48&list=PLYx38U7gxBf32GGSGK-D6RDXEpmtgP5Al&index=5
+    * The file has the following copyright from the original author:
+    *     Technical Skillz
+    */
 //SearchActivity calls this when the user clicks on the certain post when using the search filter
 public class ActivityPostView extends AppCompatActivity {
     ImageView imageView;
